@@ -1,0 +1,59 @@
+@import '../../scss/variables.module';
+
+.sunrise-and-sunset {
+    max-width: 400px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: $--white-color;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.info-card {
+
+    padding: 15px;
+    background: $--light-orange-color;
+    border-radius: 10px;
+}
+
+.info-card-city-name {
+    align-self: flex-start;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.info-card-wrapper {
+    margin-top: 10px;
+    display: flex;
+    gap: 40px;
+}
+
+.info-card-inner {
+    display: flex;
+}
+
+.info-card-box {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.info-card-icon {
+
+
+}
+
+.info-card-subtitle {
+    font-size: 14px;
+    color: $--light-grey-color;
+}
+
+.info-card-time {
+    font-size: 18px;
+    color: $--blue-color;
+}

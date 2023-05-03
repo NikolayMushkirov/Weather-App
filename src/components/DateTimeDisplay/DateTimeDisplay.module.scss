@@ -1,0 +1,18 @@
+@import '../../scss/variables.module';
+
+.date-time-display {
+
+}
+
+.time-info {
+    font-size: 40px;
+    font-weight: 700;
+    color: $--blue-color;
+}
+
+.date-info {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: $--black-color;
+}

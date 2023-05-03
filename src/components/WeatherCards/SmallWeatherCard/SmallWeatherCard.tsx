@@ -1,18 +1,25 @@
-import React from 'react'
+import React from "react";
+import { weatherIcons } from "../../../assets/icons/icons.data";
 
-import animSunnyIcon from "../../../assets/icons/animated/clear-day.svg";
+import styles from "./SmallWeatherCard.module.scss";
+type Props = {
+  dayName: string;
+};
 
-import styles from './SmallWeatherCard.module.scss'
-type Props = {}
-
-const SmallWeatherCard = (props: Props) => {
+const SmallWeatherCard = ({ dayName, temp, weatherStatus, changeActiveCard, id }: Props) => {
+  console.log(weatherStatus, "statu");
   return (
-    <div className={`${styles['small-card']} `}>
-        <img src={animSunnyIcon} alt="" className={styles["small-card-icon"]} />
-        <span className={styles["small-card-day"]}>Monday</span>
-        <span className={styles["small-card-degree"]}>29&deg;</span>
+    <div onClick={changeActiveCard} id = {id}  className={`${styles["small-card"]} `}>
+      <img
+        src={weatherIcons[weatherStatus]}
+        alt=""
+        id = {id}
+        className={styles["small-card-icon"]}
+      />
+      <span id = {id} className={styles["small-card-day"]}>{dayName}</span>
+      <span id = {id} className={styles["small-card-degree"]}>{temp}&deg;</span>
     </div>
-  )
-}
+  );
+};
 // ${styles['small-card-active']}
-export default SmallWeatherCard
+export default SmallWeatherCard;

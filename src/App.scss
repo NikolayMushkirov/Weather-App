@@ -10,6 +10,8 @@
 
 .App {
   height: 100dvh;
+  display: flex;
+  justify-content: space-around;
   background-color: $--main-background-color;
   font-family: 'Roboto', sans-serif;
 }
