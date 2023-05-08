@@ -1,25 +1,47 @@
 import React from "react";
+import { useWeatherStore } from "../../../store/store";
 import { weatherIcons } from "../../../assets/icons/icons.data";
 
 import styles from "./SmallWeatherCard.module.scss";
 type Props = {
   dayName: string;
+  id: string ;
 };
 
-const SmallWeatherCard = ({ dayName, temp, weatherStatus, changeActiveCard, id }: Props) => {
-  console.log(weatherStatus, "statu");
+const SmallWeatherCard = ({
+  dayName,
+  temp,
+  weatherStatus,
+  changeActiveCard,
+  id,
+  activeCardNumber,
+}: Props) => {
+
+
   return (
-    <div onClick={changeActiveCard} id = {id}  className={`${styles["small-card"]} `}>
+    <div
+      onClick={changeActiveCard}
+      id={id}
+      className={
+        activeCardNumber ===  id
+          ? `${styles["small-card"]} ${styles["small-card-active"]} }`
+          : styles["small-card"]
+      }
+    >
       <img
         src={weatherIcons[weatherStatus]}
         alt=""
-        id = {id}
+        id={id}
         className={styles["small-card-icon"]}
       />
-      <span id = {id} className={styles["small-card-day"]}>{dayName}</span>
-      <span id = {id} className={styles["small-card-degree"]}>{temp}&deg;</span>
+      <span id={id} className={styles["small-card-day"]}>
+        {dayName}
+      </span>
+      <span id={id} className={styles["small-card-degree"]}>
+        {temp}&deg;
+      </span>
     </div>
   );
 };
-// ${styles['small-card-active']}
+
 export default SmallWeatherCard;

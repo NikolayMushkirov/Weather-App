@@ -1,61 +1,74 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useWeatherStore } from "./store/store";
+
 import "./App.scss";
 
 import AsidePage from "./pages/AsidePage/AsidePage";
 import MainPage from "./pages/MainPage/MainPage";
-import axios from "axios";
+import Loader from "./components/Loader/Loader";
 
 function App() {
-  const API_KEY = `95fada45b19366e71bbe8760d47de0b5`;
-
-  const [searchValue, setSearchValue] = useState("Bokhan");
-  const [activeCardNumber, setActiveCardNumber] = useState(0);
+  const API_KEY = `ea0b533a8f3538cb56c478b45c2e7b1c`;
+  const {
+    sortedWeatherDataList,
+    setSortedWeatherDataList,
+    setWeatherData,
+    searchValue,
+    setCityName,
+    setLatitude,
+    setLongitude,
+    weatherData,
+    setAirQualData,
+    airQualData,
+  } = useWeatherStore();
 
   const fetchWeatherData = async () => {
     const url = `http://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&appid=${API_KEY}`;
-    const { data } = await axios.get(url);
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const data = await response.json();
+
+    const secUrl = `http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${data.city.coord.lat}&lon=${data.city.coord.lon}&appid=${API_KEY}`;
+    const secResponse = await fetch(secUrl);
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const secData = await secResponse.json();
+    setAirQualData(secData);
+    setWeatherData(data);
+
     return data;
   };
 
-  const { isLoading, error, data } = useQuery([searchValue], fetchWeatherData);
-  console.log(data, "data");
+  const { data, isLoading, error } = useQuery([searchValue], fetchWeatherData);
 
   const sortedDataListArr =
     data &&
-    data.list.filter((item) => {
+    data.list.filter((item: { dt_txt: string }) => {
       if (item.dt_txt.slice(11, 19) === "15:00:00") {
         return item;
       }
     });
 
-  const changeActiveCard = (e) => {
-    const targetId = Number(e.target.id);
-    if (targetId !== activeCardNumber) return setActiveCardNumber(targetId);
-  };
+  const lat = data && data.city.coord.lat;
+  const lon = data && data.city.coord.lon;
 
-  const getSearchValue = (e) => {
-    setSearchValue(e.currentTarget.value);
-  };
+  useEffect(() => {
+    setSortedWeatherDataList(sortedDataListArr);
+    setCityName(weatherData && weatherData.city.name);
+    setLatitude(lat);
+    setLongitude(lon);
+  }, [data]);
+  console.log(data, "app data");
+  console.log(airQualData, "air");
 
   return (
     <div className="App">
-      {isLoading ? (
-        "Loading..."
-      ) : (
-        <>
-          <MainPage
-            sortedDataListArr={sortedDataListArr}
-            changeActiveCard={changeActiveCard}
-          />
-          <AsidePage
-            activeCardNumber={activeCardNumber}
-            sortedDataListArr={sortedDataListArr}
-            getSearchValue={getSearchValue}
-            fetchWeatherData={fetchWeatherData}
-          />
-        </>
-      )}
+      <MainPage />
+      <AsidePage />
     </div>
   );
 }

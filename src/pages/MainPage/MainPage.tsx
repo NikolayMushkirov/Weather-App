@@ -3,29 +3,36 @@ import styles from "./MainPage.module.scss";
 import DateTimeDisplay from "../../components/DateTimeDisplay/DateTimeDisplay";
 import SmallWeatherCard from "../../components/WeatherCards/SmallWeatherCard/SmallWeatherCard";
 import SunriseAndSunset from "../../components/SunriseAndSunset/SunriseAndSunset";
+import { useWeatherStore } from "../../store/store";
+import AirQuality from "../../components/AirQuality/AirQuality";
 type Props = {};
 
-const MainPage = ({ sortedDataListArr, changeActiveCard }: Props) => {
-  console.log(sortedDataListArr, "sorted arr");
-
+const MainPage = (props: Props) => {
+  const {
+    sortedWeatherDataList,
+    activeCardNumber,
+    changeActiveCard,
+    getWeekDayName,
+  } = useWeatherStore();
+  console.log(sortedWeatherDataList, "sorted weather");
   return (
     <div className={styles["main-page"]}>
       <DateTimeDisplay />
       <div className={styles["small-cards-container"]}>
-        {sortedDataListArr &&
-          sortedDataListArr.map((card, index) => (
+        {sortedWeatherDataList &&
+          sortedWeatherDataList.map((card, index) => (
             <SmallWeatherCard
               key={index}
-              id = {index}
-              dayName={new Date(card.dt_txt).toLocaleDateString("en-US", {
-                weekday: "long",
-              })}
-              temp={sortedDataListArr && Math.round(card.main.temp - 273)}
+              id={index}
+              dayName={getWeekDayName(card.dt_txt)}
+              temp={Math.round(card.main.temp - 273)}
               weatherStatus={card.weather[0].main}
-              changeActiveCard = {changeActiveCard}
+              activeCardNumber={activeCardNumber}
+              changeActiveCard={changeActiveCard}
             />
           ))}
       </div>
+      <AirQuality/>
       <SunriseAndSunset />
     </div>
   );

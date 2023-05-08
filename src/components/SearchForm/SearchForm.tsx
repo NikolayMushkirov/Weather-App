@@ -1,14 +1,19 @@
-import React, { KeyboardEvent } from "react";
+import React, { useRef, KeyboardEvent } from "react";
 import styles from "./SearchForm.module.scss";
 type Props = {
   getSearchValue: any;
   fetchWeatherData: any;
 };
 
-const SearchForm = ({ getSearchValue, fetchWeatherData }: Props) => {
-  const onKeyDown = (e:KeyboardEvent) => {
-    if (e.key === "Enter") return fetchWeatherData();
+const SearchForm = ({ fetchWeatherData, setSearchValue }: Props) => {
+  const inputRef = useRef(null);
+  const onKeyDown = (e: KeyboardEvent) => {
+    if (e.key === "Enter") {
+      setSearchValue(inputRef.current.value);
+
+    }
   };
+
   return (
     <form
       onSubmit={(e) => e.preventDefault()}
@@ -18,13 +23,15 @@ const SearchForm = ({ getSearchValue, fetchWeatherData }: Props) => {
       <label htmlFor="search-input">
         <span
           onClick={(e) => {
-            e.preventDefault(), fetchWeatherData();
+            e.preventDefault(),
+              setSearchValue(inputRef.current.value),
+              fetchWeatherData();
           }}
           className={styles.icon}
         ></span>
       </label>
       <input
-        onChange={(e) => getSearchValue(e)}
+        ref={inputRef}
         id="search-input"
         className={styles["search-input"]}
         placeholder="Search..."
