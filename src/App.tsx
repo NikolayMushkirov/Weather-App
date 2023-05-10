@@ -11,7 +11,6 @@ import Loader from "./components/Loader/Loader";
 function App() {
   const API_KEY = `ea0b533a8f3538cb56c478b45c2e7b1c`;
   const {
-    sortedWeatherDataList,
     setSortedWeatherDataList,
     setWeatherData,
     searchValue,
@@ -20,7 +19,6 @@ function App() {
     setLongitude,
     weatherData,
     setAirQualData,
-    airQualData,
   } = useWeatherStore();
 
   const fetchWeatherData = async () => {
@@ -62,8 +60,6 @@ function App() {
     setLatitude(lat);
     setLongitude(lon);
   }, [data]);
-  console.log(data, "app data");
-  console.log(airQualData, "air");
 
   return (
     <div className="App">

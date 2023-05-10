@@ -1,11 +1,12 @@
-import React from "react";
-import { useWeatherStore } from "../../../store/store";
 import { weatherIcons } from "../../../assets/icons/icons.data";
 
 import styles from "./SmallWeatherCard.module.scss";
-type Props = {
+
+type Props = Partial<WeatherStore> & {
   dayName: string;
-  id: string ;
+  id: string;
+  temp: number;
+  weatherStatus: string;
 };
 
 const SmallWeatherCard = ({
@@ -16,14 +17,12 @@ const SmallWeatherCard = ({
   id,
   activeCardNumber,
 }: Props) => {
-
-
   return (
     <div
       onClick={changeActiveCard}
       id={id}
       className={
-        activeCardNumber ===  id
+        activeCardNumber === Number(id)
           ? `${styles["small-card"]} ${styles["small-card-active"]} }`
           : styles["small-card"]
       }

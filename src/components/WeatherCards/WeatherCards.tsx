@@ -1,18 +1,24 @@
-import React from "react";
-import { weatherIcons } from "../../assets/icons/icons.data";
-type Props = {};
-
-import styles from "./WeatherCards.module.scss";
 import Loader from "../Loader/Loader";
 
-const WeatherCards: React.FC<Props> = ({
+import { weatherIcons } from "../../assets/icons/icons.data";
+
+import styles from "./WeatherCards.module.scss";
+
+type Props =  {
+  cityName: string;
+  sortedWeatherDataList: List[];
+  activeCardNumber: number;
+  getWeekDayName: (dt_txt: string | Date) => string;
+}
+
+const WeatherCards = ({
   cityName,
   sortedWeatherDataList,
   activeCardNumber,
   getWeekDayName,
-}) => {
-  if(!sortedWeatherDataList) {
-    return <Loader/>
+}:  Props) => {
+  if (!sortedWeatherDataList) {
+    return <Loader />;
   }
 
   const date = new Date(
@@ -21,9 +27,11 @@ const WeatherCards: React.FC<Props> = ({
 
   return (
     <div className={styles["regular-weather-card"]}>
-      <span className={styles["regular-city-name"]}>{cityName}</span>
+      <span className={styles["regular-city-name"]}>{cityName.toString()}</span>
       <img
-        src={weatherIcons[sortedWeatherDataList[activeCardNumber].weather[0].main]}
+        src={
+          weatherIcons[sortedWeatherDataList[activeCardNumber].weather[0].main]
+        }
         alt="anim-icon"
         className={styles["regular-icon"]}
       />

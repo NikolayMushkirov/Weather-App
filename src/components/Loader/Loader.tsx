@@ -1,8 +1,7 @@
-import React from "react";
 import styles from "./Loader.module.scss";
-type Props = {};
 
-const Loader = (props: Props) => {
+
+const Loader = () => {
   return (
     <div className={styles["loader-container"]}>
       <div className={styles.loader}></div>

@@ -1,16 +1,14 @@
-import React, { useRef, KeyboardEvent } from "react";
+import { useRef, KeyboardEvent } from "react";
 import styles from "./SearchForm.module.scss";
 type Props = {
-  getSearchValue: any;
-  fetchWeatherData: any;
+  setSearchValue: WeatherStore["setSearchValue"];
 };
 
-const SearchForm = ({ fetchWeatherData, setSearchValue }: Props) => {
-  const inputRef = useRef(null);
+const SearchForm = ({ setSearchValue }: Props) => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const onKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Enter") {
-      setSearchValue(inputRef.current.value);
-
+      inputRef.current && setSearchValue(inputRef.current.value);
     }
   };
 
@@ -24,8 +22,7 @@ const SearchForm = ({ fetchWeatherData, setSearchValue }: Props) => {
         <span
           onClick={(e) => {
             e.preventDefault(),
-              setSearchValue(inputRef.current.value),
-              fetchWeatherData();
+              inputRef.current && setSearchValue(inputRef.current.value);
           }}
           className={styles.icon}
         ></span>

@@ -1,7 +1,6 @@
 @import "../../scss/variables.module.scss";
 
 .search-form {
-
   position: relative;
 }
 
@@ -21,7 +20,7 @@
   cursor: pointer;
 }
 .search-input {
-    width: 100%;
+  width: 100%;
   padding: 15px 8px;
   padding-left: 35px;
   outline: none;
@@ -31,9 +30,11 @@
   font-size: 18px;
   font-style: italic;
   color: $--blue-color;
+  text-transform: capitalize;
   &::placeholder {
     font-size: 18px;
     font-style: italic;
     color: $--blue-color;
+
   }
 }

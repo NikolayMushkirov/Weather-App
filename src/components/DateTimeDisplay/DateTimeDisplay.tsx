@@ -1,8 +1,6 @@
-import React from "react";
 import styles from "./DateTimeDisplay.module.scss";
-type Props = {};
 
-const DateTimeDisplay = (props: Props) => {
+const DateTimeDisplay = () => {
   const days = [
     "Monday",
     "Tuesday",

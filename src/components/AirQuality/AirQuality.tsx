@@ -1,28 +1,25 @@
-import React from "react";
-import styles from "./AirQuality.module.scss";
-import { useQuery } from "@tanstack/react-query";
+
 import { useWeatherStore } from "../../store/store";
-type Props = {};
+import styles from "./AirQuality.module.scss";
 
-const AirQuality = (props: Props) => {
-  const { weatherData, airQualData, sortedWeatherDataList, activeCardNumber ,cityName} =
-    useWeatherStore();
-
-  let activeAirCardNumber = activeCardNumber;
+const AirQuality = () => {
+  const {
+    airQualData,
+    sortedWeatherDataList,
+    activeCardNumber,
+    cityName,
+  } = useWeatherStore();
 
   const sortedAirQualList =
     sortedWeatherDataList &&
-    airQualData.list.filter((dataObj) => {
-      return sortedWeatherDataList.some((airObj) => airObj.dt === dataObj.dt);
+    airQualData.list.filter((airObj) => {
+      return sortedWeatherDataList.some((dataObj) => airObj.dt === dataObj.dt);
     });
 
-
-  let aqi = null
-  if (sortedAirQualList && sortedAirQualList.length > 0 && activeAirCardNumber >= 0 && activeAirCardNumber < sortedAirQualList.length) {
-    aqi = sortedAirQualList[activeAirCardNumber > 4 ? 4 : activeAirCardNumber]?.main?.aqi;
-  }
+  let aqi =
+    sortedAirQualList &&
+    sortedAirQualList[activeCardNumber <= 3 ? activeCardNumber : 3].main.aqi;
   let airStatus = "";
-  console.log(aqi, "aqi");
 
   if (aqi >= 0 && aqi <= 50) airStatus += "Good";
   if (aqi > 50 && aqi <= 100) airStatus += "Moderate";
@@ -31,8 +28,7 @@ const AirQuality = (props: Props) => {
   if (aqi > 200 && aqi <= 300) airStatus += "Very Unhealthy";
   if (aqi > 300 && aqi <= 500) airStatus += "Hazardous";
 
-  console.log(sortedAirQualList, "sorted air");
-  console.log(airStatus, "sorted air status");
+  console.log(airQualData, 'air data');
 
   return (
     <div className={styles["air-quality"]}>
@@ -48,16 +44,17 @@ const AirQuality = (props: Props) => {
       </div>
       <div className={styles["components-box"]}>
         {sortedAirQualList &&
-          Object.entries(sortedAirQualList[activeCardNumber].components).map(
-            ([name, value]) => (
-              <div className={styles.component} key={name}>
-                <span className={styles["component-quantity"]}>
-                  {value.toFixed(1)}
-                </span>
-                <span className={styles["component-name"]}>{name}</span>
-              </div>
-            )
-          )}
+          Object.entries(
+            sortedAirQualList[activeCardNumber <= 3 ? activeCardNumber : 3]
+              .components
+          ).map(([name, value]) => (
+            <div className={styles.component} key={name}>
+              <span className={styles["component-quantity"]}>
+                {value.toFixed(1)}
+              </span>
+              <span className={styles["component-name"]}>{name}</span>
+            </div>
+          ))}
       </div>
     </div>
   );

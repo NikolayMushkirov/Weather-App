@@ -14,7 +14,11 @@ import Tornado from "./all/tornado.svg";
 import Clear from "./all/clear-day.svg";
 import Clouds from "./all/cloudy.svg";
 
-export const weatherIcons = {
+ type WeatherIcons = {
+  [key: string]: string;
+};
+
+export const weatherIcons: WeatherIcons = {
   Thunderstorm: Thunderstorm,
   Drizzle: Drizzle,
   Rain: Rain,
