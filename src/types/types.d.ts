@@ -1,13 +1,14 @@
 type WeatherStore = {
-  weatherData: WeatherData;
-  sortedWeatherDataList: List[];
-  airQualData: AirQualityData;
+  weatherData: WeatherData ;
+  sortedWeatherDataList: List[] ;
+  airQualData: AirQualityData  ;
   searchValue: string;
   activeCardNumber: number;
   activeAirCardNumber: number;
   cityName: string;
-  latitude: number;
-  longitude: number;
+  latitudeCoord: number;
+  longitudeCoord: number;
+
   setWeatherData: (data: any) => void;
   setAirQualData: (data: any) => void;
   setSortedWeatherDataList: (data: any) => void;
@@ -15,8 +16,8 @@ type WeatherStore = {
   setActiveCardNumber: (activeCardNumber: number) => void;
   setActiveAirCardNumber: (activeAirCardNumber: number) => void;
   setCityName: (cityName: string | null) => void;
-  setLatitude: (lat: number) => void;
-  setLongitude: (lon: number) => void;
+  setLatitudeCoord: (lat: number) => void;
+  setLongitudeCoord: (lon: number) => void;
   changeActiveCard: (e: React.MouseEvent<HTMLDivElement>) => void;
   getWeekDayName: (dt_txt: string | Date) => string;
 };

@@ -1,24 +1,25 @@
 import { useWeatherStore } from "../../store/store";
 
-import WeatherCards from "../../components/WeatherCards/WeatherCards";
+
 import SearchForm from "../../components/SearchForm/SearchForm";
 
-import styles from "./AsidePage.module.scss";
+import styles from "./AsideWidget.module.scss";
+import RegularWeatherCard from "../../components/WeatherCards/RegularWeatherCard/RegularWeatherCard";
 
-const AsidePage = () => {
+const AsideWidget = () => {
   const {
     setSearchValue,
     sortedWeatherDataList,
     activeCardNumber,
     getWeekDayName,
-    cityName,
     weatherData,
   } = useWeatherStore();
   console.log(weatherData, "weather data");
+  const cityName = weatherData && weatherData.city.name;
   return (
-    <div className={styles["aside-page"]}>
+    <div className={styles["aside-widget"]}>
       <SearchForm setSearchValue={setSearchValue} />
-      <WeatherCards
+      <RegularWeatherCard
         cityName={cityName}
         sortedWeatherDataList={sortedWeatherDataList}
         activeCardNumber={activeCardNumber}
@@ -28,4 +29,4 @@ const AsidePage = () => {
   );
 };
 
-export default AsidePage;
+export default AsideWidget;

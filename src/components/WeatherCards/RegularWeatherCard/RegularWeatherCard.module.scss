@@ -1,18 +1,14 @@
-@import "../../scss/variables.module";
+@import "../../../scss/variables.module";
 
 .regular-weather-card {
-  max-width: 400px;
+
   padding: 20px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  background: rgb(0, 212, 255);
-  background: linear-gradient(
-    90deg,
-    rgba(0, 212, 255, 1) 0%,
-    rgba(106, 156, 255, 1) 100%
-  );
+
+  background: $--card-bg-color;
   color: $--white-color;
   border-radius: 20px;
 }
@@ -55,12 +51,14 @@
 
 .regular-wind-status-box {
   display: flex;
-  gap: 30px;
+  gap: 15px;
 }
 
 .regular-wind-status {
   position: relative;
   font-weight: 500;
+  border-right: 2px solid $--white-color;
+  padding-right: 15px;
   &::before {
     content: "";
     position: absolute;
@@ -69,53 +67,54 @@
     display: block;
     width: 30px;
     height: 20px;
-    background-image: url("../../assets/icons/wind-icon.svg");
+    background-image: url("../../../assets/icons/wind-icon.svg");
   }
 }
 
 .regular-wind-status-wind-speed {
   position: relative;
-  &::before {
-    content: "";
-    position: absolute;
-    left: -15px;
-    display: block;
-    width: 1px;
-    height: 100%;
-    background-color: $--white-color;
-  }
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   left: -16px;
+
+  //   width: 1px;
+  //   height: 100%;
+  //   background-color: $--white-color;
+  // }
 }
 
 .regular-humidity-status-box {
   display: flex;
-  gap: 30px;
+  gap: 20px;
 
 }
 .regular-humidity-status {
   position: relative;
   font-weight: 500;
+  border-right: 2px solid $--white-color;
+  padding-right: 17px;
   &::before {
     content: "";
     position: absolute;
     top: -1px;
     left: -30px;
-    display: block;
     width: 30px;
     height: 20px;
-    background-image: url("../../assets/icons/drop-icon.svg");
+    background-image: url("../../../assets/icons/drop-icon.svg");
     background-repeat: no-repeat;
   }
 }
 
 .regular-humidity-status-percent {
   position: relative;
-  &::before {
-    content: "";
-    position: absolute;
-    left: -15px;
-    display: block;
-    width: 1px;
-    height: 100%;
-    background-color: $--white-color;
-  }
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   left: -15px;
+  //   display: block;
+  //   width: 1px;
+  //   height: 100%;
+  //   background-color: $--white-color;
+  // }
 }

@@ -1,5 +1,8 @@
+import React from "react";
+
 import { useRef, KeyboardEvent } from "react";
 import styles from "./SearchForm.module.scss";
+import searchIcon from "../../assets/icons/magnifying-glass.svg";
 type Props = {
   setSearchValue: WeatherStore["setSearchValue"];
 };
@@ -19,13 +22,15 @@ const SearchForm = ({ setSearchValue }: Props) => {
       className={styles["search-form"]}
     >
       <label htmlFor="search-input">
-        <span
+        <img
+          src={searchIcon}
+          alt=""
+          className={styles["search-icon"]}
           onClick={(e) => {
             e.preventDefault(),
               inputRef.current && setSearchValue(inputRef.current.value);
           }}
-          className={styles.icon}
-        ></span>
+        />
       </label>
       <input
         ref={inputRef}

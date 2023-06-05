@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
-@import './scss/_variables.module.scss';
+@import "./scss/_variables.module.scss";
 
 * {
   margin: 0;
@@ -10,8 +10,10 @@
 
 .App {
   height: 100dvh;
-  display: flex;
-  justify-content: space-around;
-  background-color: $--main-background-color;
-  font-family: 'Roboto', sans-serif;
+
+
+
+  background: var(--main-background-color);
+
+  font-family: "Roboto", sans-serif;
 }

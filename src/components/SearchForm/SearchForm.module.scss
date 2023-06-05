@@ -4,37 +4,38 @@
   position: relative;
 }
 
-.icon {
+.search-icon {
   position: absolute;
-  top: 17px;
+  top: 25%;
   left: 10px;
   display: inline-block;
-  width: 16px;
-  height: 16px;
+  width: 25px;
+  height: 25px;
 
-  background-image: url("../../assets/icons/magnifying-glass.svg");
-  background-size: 16px 16px;
-  background-repeat: no-repeat;
-  background-position: right center;
+
+  // background-image: url("../../assets/icons/magnifying-glass.svg");
+  // background-size: 25px 25px;
+  // background-repeat: no-repeat;
+  // background-position: right center;
 
   cursor: pointer;
 }
 .search-input {
-  width: 100%;
+
   padding: 15px 8px;
-  padding-left: 35px;
+  padding-left: 50px;
   outline: none;
   border-radius: 15px;
   border: none;
-  background: $--main-background-color;
-  font-size: 18px;
+  background: var(--sec-background-color);
+  font-size: 20px;
   font-style: italic;
-  color: $--blue-color;
+  color: var(--text-secondary);
   text-transform: capitalize;
   &::placeholder {
     font-size: 18px;
     font-style: italic;
-    color: $--blue-color;
+    color: var(--text-secondary);
 
   }
 }

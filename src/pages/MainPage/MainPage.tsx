@@ -1,40 +1,37 @@
+import React from "react";
 
 import { useWeatherStore } from "../../store/store";
+import useLocalStorage from "use-local-storage";
 
-import DateTimeDisplay from "../../components/DateTimeDisplay/DateTimeDisplay";
-import SmallWeatherCard from "../../components/WeatherCards/SmallWeatherCard/SmallWeatherCard";
-import SunriseAndSunset from "../../components/SunriseAndSunset/SunriseAndSunset";
-import AirQuality from "../../components/AirQuality/AirQuality";
-
+import AsideWidget from "../../widgets/AsideWidget/AsideWidget";
+import MainWidget from "../../widgets/MainWidget/MainWidget";
 import styles from "./MainPage.module.scss";
+import Loader from "../../components/Loader/Loader";
 
 const MainPage = () => {
-  const {
-    sortedWeatherDataList,
-    activeCardNumber,
-    changeActiveCard,
-    getWeekDayName,
-  } = useWeatherStore();
-  console.log(sortedWeatherDataList, "sorted weather");
+  const { weatherData } = useWeatherStore();
+
+  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    defaultDark ? "dark" : "light"
+  );
+
+  const switchTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  };
+
   return (
-    <div className={styles["main-page"]}>
-      <DateTimeDisplay />
-      <div className={styles["small-cards-container"]}>
-        {sortedWeatherDataList &&
-          sortedWeatherDataList.map((card, index) => (
-            <SmallWeatherCard
-              key={index}
-              id={index.toString()}
-              dayName={getWeekDayName(card.dt_txt)}
-              temp={Math.round(card.main.temp - 273)}
-              weatherStatus={card.weather[0].main}
-              activeCardNumber={activeCardNumber}
-              changeActiveCard={changeActiveCard}
-            />
-          ))}
-      </div>
-      <AirQuality/>
-      <SunriseAndSunset />
+    <div className={styles["main-page"]} data-theme={theme}>
+      {weatherData ? (
+        <>
+          <MainWidget switchTheme={switchTheme} />
+          <AsideWidget />
+        </>
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };

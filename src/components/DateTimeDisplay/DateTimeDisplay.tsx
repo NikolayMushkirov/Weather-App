@@ -2,16 +2,16 @@ import styles from "./DateTimeDisplay.module.scss";
 
 const DateTimeDisplay = () => {
   const days = [
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
-    "Sunday",
   ];
 
-  const day = days[new Date().getDay() - 1];
+  const day = days[new Date().getDay()];
   const nowDate = new Date().toLocaleDateString();
   const hours = new Date().getHours().toString().padStart(2, "0");
   const minutes = new Date().getMinutes().toString().padStart(2, "0");

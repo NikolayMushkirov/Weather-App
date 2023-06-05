@@ -1,12 +1,10 @@
+@import '../../scss/variables.module';
 .main-page {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
 
-.small-cards-container {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 20px;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--main-background-color);
+    color: var(--text-primary);
 }

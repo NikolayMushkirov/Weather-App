@@ -1,40 +1,31 @@
-@import '../../../scss/_variables.module.scss';
+@import "../../../scss/_variables.module.scss";
 
 .small-card {
-    max-width: 150px;
-    padding: 20px 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    background: $--white-color;
-    border-radius:20px;
-    cursor: pointer;
-
-    &:hover {
-        transform: scale(1.2);
-        transition: all 0.2s;
-    }
-
+  max-width: 150px;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: var(--third-background-color);
+  border-radius: 20px;
+  cursor: pointer;
 
 }
 
 .small-card-active {
-    background: linear-gradient(
-        90deg,
-        rgba(0, 212, 255, 1) 0%,
-        rgba(106, 156, 255, 1) 100%
-      );
-      color: $--white-color;
+  background: $--card-bg-color;
+  color: $--white-color;
 
 }
 
 .small-card-icon {
-    width: 70px;
-    height: 60px;
+  width: 70px;
+  height: 60px;
 }
 
-.small-card-day , .small-card-degree {
-    font-size: 18px;
-    font-weight: 500;
+.small-card-day,
+.small-card-degree {
+  font-size: 18px;
+  font-weight: 500;
 }

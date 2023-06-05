@@ -1,11 +1,12 @@
-import styles from "./Loader.module.scss";
+import React from "react";
 
+import styles from "./Loader.module.scss";
 
 const Loader = () => {
   return (
-    <div className={styles["loader-container"]}>
-      <div className={styles.loader}></div>
-      <p>Loading weather data...</p>
+    <div className={styles.spinner}>
+      <div className={styles.dot1}></div>
+      <div className={styles.dot2}></div>
     </div>
   );
 };

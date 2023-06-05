@@ -1,0 +1,31 @@
+@import '../../scss/variables.module';
+
+.small-cards-container {
+    max-width: 850px;
+}
+
+.main-widget {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+    background:var(--sec-background-color);
+
+}
+
+.date-time-and-switch-btn-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-widget-box {
+    display: flex;
+    gap: 20px;
+}
+
+.small-cards-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}

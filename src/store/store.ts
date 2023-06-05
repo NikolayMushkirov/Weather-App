@@ -1,25 +1,25 @@
 import { create } from "zustand";
 
+
 export const useWeatherStore = create<WeatherStore>((set) => ({
   weatherData: null,
   airQualData: null,
   sortedWeatherDataList: null,
-  searchValue: "Bokhan",
+  searchValue: "Irkutsk",
   activeCardNumber: 0,
-  activeAirCardNumber:0,
-  cityName : null,
-  latitude :  0,
-  longitude: 0,
+  activeAirCardNumber: 0,
+  latitudeCoord: Infinity,
+  longitudeCoord: Infinity,
+
 
   setWeatherData: (data) => set({ weatherData: data }),
-  setAirQualData : (data) => set({airQualData: data}),
+  setAirQualData: (data) => set({ airQualData: data }),
   setSortedWeatherDataList: (data) => set({ sortedWeatherDataList: data }),
   setSearchValue: (searchValue) => set({ searchValue }),
   setActiveCardNumber: (activeCardNumber) => set({ activeCardNumber }),
   setActiveAirCardNumber: (activeAirCardNumber) => set({ activeAirCardNumber }),
-  setCityName : (cityName) => set({cityName}),
-  setLatitude :  (latitude) => set({latitude}),
-  setLongitude :  (longitude) => set({longitude}),
+  setLatitudeCoord: (latitudeCoord) => set({ latitudeCoord }),
+  setLongitudeCoord: (longitudeCoord) => set({ longitudeCoord }),
 
   changeActiveCard: (e) => {
     const targetId = Number(e.currentTarget.id);
@@ -31,7 +31,7 @@ export const useWeatherStore = create<WeatherStore>((set) => ({
     });
   },
 
-  getWeekDayName: (dt_txt: string) => {
+  getWeekDayName: (dt_txt: string | Date) => {
     return new Date(dt_txt).toLocaleDateString("en-US", {
       weekday: "long",
     });

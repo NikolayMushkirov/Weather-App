@@ -1,22 +1,22 @@
-import Loader from "../Loader/Loader";
+import Loader from "../../Loader/Loader";
 
-import { weatherIcons } from "../../assets/icons/icons.data";
+import { weatherIcons } from "../../../assets/icons/icons.data";
 
-import styles from "./WeatherCards.module.scss";
+import styles from "./RegularWeatherCard.module.scss";
 
-type Props =  {
+type Props = {
   cityName: string;
   sortedWeatherDataList: List[];
   activeCardNumber: number;
   getWeekDayName: (dt_txt: string | Date) => string;
-}
+};
 
-const WeatherCards = ({
+const RegularWeatherCard = ({
   cityName,
   sortedWeatherDataList,
   activeCardNumber,
   getWeekDayName,
-}:  Props) => {
+}: Props) => {
   if (!sortedWeatherDataList) {
     return <Loader />;
   }
@@ -64,4 +64,4 @@ const WeatherCards = ({
   );
 };
 
-export default WeatherCards;
+export default RegularWeatherCard;

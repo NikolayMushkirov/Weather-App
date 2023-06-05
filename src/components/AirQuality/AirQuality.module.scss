@@ -6,7 +6,7 @@
     flex-direction: column;
     gap: 15px;
     padding: 20px;
-    background-color: $--white-color;
+    background-color: var(--third-background-color);
     border-radius: 20px;
 }
 
@@ -39,9 +39,9 @@
 }
 
 .status {
-    font-size: 20px;
-    font-weight: 500;
-    color: $--green-color;
+    font-size: 22px;
+    font-weight: 600;
+
 }
 
 .comment {
@@ -52,8 +52,8 @@
 .refresh-btn {
     padding: 10px 15px;
     font-weight: 600;
-    color: $--blue-color;
-    background-color: $--main-background-color;
+    color: var(--text-secondary);
+    background-color: var(--air-qual-button-bg-color);
     border-radius: 10px;
     cursor: pointer;
 }
@@ -70,7 +70,6 @@
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    background-color: $--light-green-color;
     border-radius: 10px;
 
 }
@@ -78,12 +77,12 @@
 .component-quantity {
     font-size: 20px;
     font-weight: 500;
-    color: $--green-color;
+    color: $--white-color;
 }
 
 .component-name {
     font-size: 16px;
-    font-weight: 500;
-    color: $--green-color;
+    font-weight: 600;
+    color: $--white-color;
     text-transform: uppercase;
 }

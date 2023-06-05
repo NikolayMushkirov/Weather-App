@@ -1,34 +1,40 @@
+import React from "react";
 
 import { useWeatherStore } from "../../store/store";
 import styles from "./AirQuality.module.scss";
 
 const AirQuality = () => {
-  const {
-    airQualData,
-    sortedWeatherDataList,
-    activeCardNumber,
-    cityName,
-  } = useWeatherStore();
+  const { weatherData, airQualData, sortedWeatherDataList, activeCardNumber } =
+    useWeatherStore();
 
   const sortedAirQualList =
     sortedWeatherDataList &&
     airQualData.list.filter((airObj) => {
       return sortedWeatherDataList.some((dataObj) => airObj.dt === dataObj.dt);
     });
+  console.log(sortedAirQualList);
+  const cityName = weatherData?.city.name;
 
-  let aqi =
+  const aqi =
     sortedAirQualList &&
     sortedAirQualList[activeCardNumber <= 3 ? activeCardNumber : 3].main.aqi;
   let airStatus = "";
 
-  if (aqi >= 0 && aqi <= 50) airStatus += "Good";
-  if (aqi > 50 && aqi <= 100) airStatus += "Moderate";
-  if (aqi > 100 && aqi <= 150) airStatus += "Unhealthy for Sensitive Groups";
-  if (aqi > 150 && aqi <= 200) airStatus += "Unhealthy";
-  if (aqi > 200 && aqi <= 300) airStatus += "Very Unhealthy";
-  if (aqi > 300 && aqi <= 500) airStatus += "Hazardous";
+  if (aqi === 1) airStatus += "Very Good";
+  if (aqi === 2) airStatus += "Good";
+  if (aqi === 3) airStatus += "Moderate";
+  if (aqi === 4) airStatus += "Unhealthy";
+  if (aqi === 5) airStatus += "Very Unhealthy";
 
-  console.log(airQualData, 'air data');
+  function getAirQualityColor(aqi: number) {
+    const hueGreen = 120;
+    const hueRed = 0;
+    const hue = ((1 - aqi / 5) * (hueGreen - hueRed) + hueRed) / 360;
+
+    return `hsl(${hue * 360}, 90%, 40%)`;
+  }
+
+  console.log(airQualData, "air data");
 
   return (
     <div className={styles["air-quality"]}>
@@ -38,7 +44,12 @@ const AirQuality = () => {
       </div>
       <div className={styles["air-quality-status"]}>
         <div className={styles["status-box"]}>
-          <span className={styles.status}>{airStatus}</span>
+          <span
+            className={styles.status}
+            style={{ color: getAirQualityColor(aqi) }}
+          >
+            {airStatus}
+          </span>
         </div>
         <div className={styles["refresh-btn"]}>Refresh</div>
       </div>
@@ -48,7 +59,13 @@ const AirQuality = () => {
             sortedAirQualList[activeCardNumber <= 3 ? activeCardNumber : 3]
               .components
           ).map(([name, value]) => (
-            <div className={styles.component} key={name}>
+            <div
+              style={{
+                backgroundColor: getAirQualityColor(aqi),
+              }}
+              className={styles.component}
+              key={name}
+            >
               <span className={styles["component-quantity"]}>
                 {value.toFixed(1)}
               </span>
