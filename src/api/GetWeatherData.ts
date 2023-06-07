@@ -14,35 +14,43 @@ const GetWeatherData = () => {
     longitudeCoord,
   } = useWeatherStore();
 
-  const fetchWeatherData = async () => {
-    const API_KEY = import.meta.env.VITE_WEATHER_APP_API_KEY;
+  const API_KEY = import.meta.env.VITE_WEATHER_APP_API_KEY;
 
-    const url = `http://api.openweathermap.org/data/2.5/forecast?lat=${latitudeCoord}&lon=${longitudeCoord}&q=${searchValue}&appid=${API_KEY}`;
+  const fetchAirQualityData = async () => {
+    const url = `https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${latitudeCoord}&lon=${longitudeCoord}&appid=${API_KEY}`;
 
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
-    const weathData = await response.json();
+    const airData = await response.json();
 
-    const secUrl = `http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${weathData.city.coord.lat}&lon=${weathData.city.coord.lon}&appid=${API_KEY}`;
+    return airData;
+  };
 
-    const secResponse = await fetch(secUrl);
+  const fetchWeatherData = async () => {
+    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitudeCoord}&lon=${longitudeCoord}&q=${searchValue}&appid=${API_KEY}`;
+
+    const response = await fetch(url);
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
-    const airData = await secResponse.json();
+    const forecastData = await response.json();
 
-    return { weathData, airData };
+    return forecastData;
   };
 
-  const { data } = useQuery([latitudeCoord, longitudeCoord, searchValue], () =>
-    fetchWeatherData()
+  const { data: airQualityData } = useQuery(
+    ["airQualityData", latitudeCoord, longitudeCoord, searchValue],
+    fetchAirQualityData
   );
 
-  console.log(data, "app data");
+  const { data: forecastData } = useQuery(
+    ["weatherData", latitudeCoord, longitudeCoord, searchValue],
+    fetchWeatherData
+  );
 
-  const sortedDataListArr = data?.weathData.list.filter(
+  const sortedDataListArr = forecastData?.list.filter(
     (item: { dt_txt: string }) => {
       if (item.dt_txt.slice(11, 19) === "15:00:00") {
         return item;
@@ -62,9 +70,9 @@ const GetWeatherData = () => {
 
   useEffect(() => {
     setSortedWeatherDataList(sortedDataListArr);
-    setAirQualData(data?.airData);
-    setWeatherData(data?.weathData);
-  }, [data]);
+    setAirQualData(airQualityData);
+    setWeatherData(forecastData);
+  }, [forecastData, airQualityData]);
   return null;
 };
 
