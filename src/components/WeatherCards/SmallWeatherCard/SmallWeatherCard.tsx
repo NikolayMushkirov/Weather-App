@@ -1,6 +1,5 @@
-import React from "react";
+import { weatherIcons } from "assets/icons/icons.data";
 
-import { weatherIcons } from "../../../assets/icons/icons.data";
 import styles from "./SmallWeatherCard.module.scss";
 
 type Props = Partial<WeatherStore> & {

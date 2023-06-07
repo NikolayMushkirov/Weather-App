@@ -1,9 +1,8 @@
-import React from "react";
-
-import moonIcon from "../../assets/icons/moon.svg";
-import sunIcon from "../../assets/icons/sun.svg";
-
 import classnames from "classnames";
+
+import moonIcon from "assets/icons/moon.svg";
+import sunIcon from "assets/icons/sun.svg";
+
 import styles from "./SwitchButton.module.scss";
 type Props = {
   switchTheme: () => void;

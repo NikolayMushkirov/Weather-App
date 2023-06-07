@@ -1,7 +1,7 @@
-import { useWeatherStore } from "../../store/store";
+import { useWeatherStore } from "store/store";
 
-import clearDayIcon from "../../assets/icons/all/clear-day.svg";
-import clearNightIcon from "../../assets/icons/all/clear-night.svg";
+import clearDayIcon from "assets/icons/all/clear-day.svg";
+import clearNightIcon from "assets/icons/all/clear-night.svg";
 import styles from "./SunriseAndSunset.module.scss";
 
 const SunriseAndSunset = () => {

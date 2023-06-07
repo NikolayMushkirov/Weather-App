@@ -1,6 +1,5 @@
-import React from "react";
+import { useWeatherStore } from "store/store";
 
-import { useWeatherStore } from "../../store/store";
 import styles from "./AirQuality.module.scss";
 
 const AirQuality = () => {

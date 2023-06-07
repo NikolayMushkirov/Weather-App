@@ -1,16 +1,15 @@
-import React from "react";
-
-import { useWeatherStore } from "../../store/store";
 import useLocalStorage from "use-local-storage";
 
-import AsideWidget from "../../widgets/AsideWidget/AsideWidget";
-import MainWidget from "../../widgets/MainWidget/MainWidget";
+import { useWeatherStore } from "store/store";
+
+import AsideWidget from "widgets/AsideWidget/AsideWidget";
+import MainWidget from "widgets/MainWidget/MainWidget";
+import Loader from "components/Loader/Loader";
+
 import styles from "./MainPage.module.scss";
-import Loader from "../../components/Loader/Loader";
 
 const MainPage = () => {
   const { weatherData } = useWeatherStore();
-
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [theme, setTheme] = useLocalStorage(
     "theme",

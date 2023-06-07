@@ -1,12 +1,10 @@
-import React from "react";
+import { useWeatherStore } from "store/store";
 
-import { useWeatherStore } from "../../store/store";
-
-import DateTimeDisplay from "../../components/DateTimeDisplay/DateTimeDisplay";
-import SmallWeatherCard from "../../components/WeatherCards/SmallWeatherCard/SmallWeatherCard";
-import SunriseAndSunset from "../../components/SunriseAndSunset/SunriseAndSunset";
-import AirQuality from "../../components/AirQuality/AirQuality";
-import SwitchButton from "../../components/SwitchButton/SwitchButton";
+import DateTimeDisplay from "components/DateTimeDisplay/DateTimeDisplay";
+import SmallWeatherCard from "components/WeatherCards/SmallWeatherCard/SmallWeatherCard";
+import SunriseAndSunset from "components/SunriseAndSunset/SunriseAndSunset";
+import AirQuality from "components/AirQuality/AirQuality";
+import SwitchButton from "components/SwitchButton/SwitchButton";
 
 import styles from "./MainWidget.module.scss";
 

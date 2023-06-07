@@ -1,10 +1,9 @@
-import { useWeatherStore } from "../../store/store";
+import { useWeatherStore } from "store/store";
 
-
-import SearchForm from "../../components/SearchForm/SearchForm";
+import SearchForm from "components/SearchForm/SearchForm";
+import RegularWeatherCard from "components/WeatherCards/RegularWeatherCard/RegularWeatherCard";
 
 import styles from "./AsideWidget.module.scss";
-import RegularWeatherCard from "../../components/WeatherCards/RegularWeatherCard/RegularWeatherCard";
 
 const AsideWidget = () => {
   const {

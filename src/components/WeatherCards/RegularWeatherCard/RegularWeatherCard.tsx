@@ -1,8 +1,4 @@
-import React from "react";
-
-import Loader from "../../Loader/Loader";
-
-import { weatherIcons } from "../../../assets/icons/icons.data";
+import { weatherIcons } from "assets/icons/icons.data";
 
 import styles from "./RegularWeatherCard.module.scss";
 
@@ -20,7 +16,7 @@ const RegularWeatherCard = ({
   getWeekDayName,
 }: Props) => {
   if (!sortedWeatherDataList.length) {
-    return <Loader />;
+    return null;
   }
 
   const date = new Date(

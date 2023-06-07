@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useWeatherStore } from "../store/store";
+import { useWeatherStore } from "store/store";
 
 const GetWeatherData = () => {
   const {

@@ -1,7 +1,5 @@
-import React from "react";
-
-import MainPage from "./pages/MainPage/MainPage";
-import GetWeatherData from "./api/getWeatherData";
+import MainPage from "pages/MainPage/MainPage";
+import GetWeatherData from "api/GetWeatherData";
 
 import "./App.scss";
 
