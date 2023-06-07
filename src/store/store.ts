@@ -1,16 +1,33 @@
 import { create } from "zustand";
 
-
 export const useWeatherStore = create<WeatherStore>((set) => ({
-  weatherData: null,
-  airQualData: null,
-  sortedWeatherDataList: null,
-  searchValue: "Irkutsk",
+  weatherData: {
+    cnt: 0,
+    cod: "",
+    message: 0,
+    city: {
+      id: 0,
+      name: "",
+      coord: { lat: 0, lon: 0 },
+      country: "",
+      population: 0,
+      timezone: 0,
+      sunrise: 0,
+      sunset: 0,
+    },
+    list: [],
+  },
+  sortedWeatherDataList: [],
+  airQualData: {
+    coord: { lat: 0, lon: 0 },
+    list: [],
+  },
+
+  searchValue: "",
   activeCardNumber: 0,
   activeAirCardNumber: 0,
   latitudeCoord: Infinity,
   longitudeCoord: Infinity,
-
 
   setWeatherData: (data) => set({ weatherData: data }),
   setAirQualData: (data) => set({ airQualData: data }),

@@ -10,7 +10,18 @@
   background: var(--third-background-color);
   border-radius: 20px;
   cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
 
+  &:hover {
+    transform: scale(1.1);
+    transition: all 0.2s;
+  }
+
+  &:active {
+    transform: scale(0.9);
+    transition: all 0.2s;
+  }
 }
 
 .small-card-active {

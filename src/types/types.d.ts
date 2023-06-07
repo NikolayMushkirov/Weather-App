@@ -1,21 +1,19 @@
 type WeatherStore = {
   weatherData: WeatherData ;
-  sortedWeatherDataList: List[] ;
-  airQualData: AirQualityData  ;
+  sortedWeatherDataList: SortedWeatherDataList  ;
+  airQualData: AirQualityData ;
   searchValue: string;
   activeCardNumber: number;
   activeAirCardNumber: number;
-  cityName: string;
   latitudeCoord: number;
   longitudeCoord: number;
 
-  setWeatherData: (data: any) => void;
-  setAirQualData: (data: any) => void;
-  setSortedWeatherDataList: (data: any) => void;
+  setWeatherData: (data: WeatherData) => void;
+  setAirQualData: (data: AirQualityData) => void;
+  setSortedWeatherDataList: (data: SortedWeatherDataList) => void;
   setSearchValue: (searchValue: string) => void;
   setActiveCardNumber: (activeCardNumber: number) => void;
   setActiveAirCardNumber: (activeAirCardNumber: number) => void;
-  setCityName: (cityName: string | null) => void;
   setLatitudeCoord: (lat: number) => void;
   setLongitudeCoord: (lon: number) => void;
   changeActiveCard: (e: React.MouseEvent<HTMLDivElement>) => void;
@@ -27,12 +25,12 @@ type WeatherData = {
   cod: string;
   message: number;
   city: City;
-  list: List;
+  list: List[];
 };
 
 type AirQualityData = {
   coord: Coord;
-  list: [AirQualDataList];
+  list: AirQualDataList[];
 };
 
 type AirQualDataList = {
@@ -40,6 +38,8 @@ type AirQualDataList = {
   components: { [key: string]: number };
   dt: number;
 };
+
+type SortedWeatherDataList = Array<List>;
 
 type City = {
   id: number;
@@ -100,5 +100,3 @@ type Wind = {
   deg: number;
   gust: number;
 };
-
-

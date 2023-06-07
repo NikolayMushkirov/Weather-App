@@ -12,11 +12,11 @@ const AirQuality = () => {
     airQualData.list.filter((airObj) => {
       return sortedWeatherDataList.some((dataObj) => airObj.dt === dataObj.dt);
     });
-  console.log(sortedAirQualList);
+
   const cityName = weatherData?.city.name;
 
   const aqi =
-    sortedAirQualList &&
+    sortedAirQualList.length &&
     sortedAirQualList[activeCardNumber <= 3 ? activeCardNumber : 3].main.aqi;
   let airStatus = "";
 
@@ -33,8 +33,6 @@ const AirQuality = () => {
 
     return `hsl(${hue * 360}, 90%, 40%)`;
   }
-
-  console.log(airQualData, "air data");
 
   return (
     <div className={styles["air-quality"]}>
@@ -54,7 +52,7 @@ const AirQuality = () => {
         <div className={styles["refresh-btn"]}>Refresh</div>
       </div>
       <div className={styles["components-box"]}>
-        {sortedAirQualList &&
+        {sortedAirQualList.length &&
           Object.entries(
             sortedAirQualList[activeCardNumber <= 3 ? activeCardNumber : 3]
               .components

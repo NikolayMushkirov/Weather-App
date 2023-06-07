@@ -1,3 +1,5 @@
+import React from "react";
+
 import Loader from "../../Loader/Loader";
 
 import { weatherIcons } from "../../../assets/icons/icons.data";
@@ -17,7 +19,7 @@ const RegularWeatherCard = ({
   activeCardNumber,
   getWeekDayName,
 }: Props) => {
-  if (!sortedWeatherDataList) {
+  if (!sortedWeatherDataList.length) {
     return <Loader />;
   }
 

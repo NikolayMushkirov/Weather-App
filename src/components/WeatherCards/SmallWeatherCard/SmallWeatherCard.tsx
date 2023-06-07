@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import React from "react";
 
 import { weatherIcons } from "../../../assets/icons/icons.data";
 import styles from "./SmallWeatherCard.module.scss";
@@ -19,10 +19,7 @@ const SmallWeatherCard = ({
   activeCardNumber,
 }: Props) => {
   return (
-    <motion.div
-    whileHover={{ scale: 1.1 }}
-    whileTap={{ scale: 0.9 }}
-
+    <div
       onClick={changeActiveCard}
       id={id}
       className={
@@ -43,7 +40,7 @@ const SmallWeatherCard = ({
       <span id={id} className={styles["small-card-degree"]}>
         {temp}&deg;
       </span>
-    </motion.div>
+    </div>
   );
 };
 

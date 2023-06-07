@@ -14,10 +14,10 @@ const GetWeatherData = () => {
     longitudeCoord,
   } = useWeatherStore();
 
-  const fetchWeatherData = async (searchValue: string) => {
+  const fetchWeatherData = async () => {
     const API_KEY = import.meta.env.VITE_WEATHER_APP_API_KEY;
 
-    const url = `http://api.openweathermap.org/data/2.5/forecast?lat=${latitudeCoord}&lon=${longitudeCoord}&appid=${API_KEY}`;
+    const url = `http://api.openweathermap.org/data/2.5/forecast?lat=${latitudeCoord}&lon=${longitudeCoord}&q=${searchValue}&appid=${API_KEY}`;
 
     const response = await fetch(url);
     if (!response.ok) {
@@ -25,7 +25,7 @@ const GetWeatherData = () => {
     }
     const weathData = await response.json();
 
-    const secUrl = `http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${latitudeCoord}&lon=${longitudeCoord}&appid=${API_KEY}`;
+    const secUrl = `http://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${weathData.city.coord.lat}&lon=${weathData.city.coord.lon}&appid=${API_KEY}`;
 
     const secResponse = await fetch(secUrl);
     if (!response.ok) {
@@ -36,8 +36,8 @@ const GetWeatherData = () => {
     return { weathData, airData };
   };
 
-  const { data, isLoading } = useQuery([latitudeCoord, longitudeCoord], () =>
-    fetchWeatherData(searchValue)
+  const { data } = useQuery([latitudeCoord, longitudeCoord, searchValue], () =>
+    fetchWeatherData()
   );
 
   console.log(data, "app data");
