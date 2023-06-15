@@ -26,8 +26,8 @@ export const useWeatherStore = create<WeatherStore>((set) => ({
   searchValue: "",
   activeCardNumber: 0,
   activeAirCardNumber: 0,
-  latitudeCoord: Infinity,
-  longitudeCoord: Infinity,
+  latitudeCoord: 0,
+  longitudeCoord: 0,
 
   setWeatherData: (data) => set({ weatherData: data }),
   setAirQualData: (data) => set({ airQualData: data }),

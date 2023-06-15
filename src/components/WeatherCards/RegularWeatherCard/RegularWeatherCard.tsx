@@ -38,7 +38,7 @@ const RegularWeatherCard = ({
       </span>
       <span className={styles["regular-date"]}>{date}</span>
       <span className={styles["regular-degrees"]}>
-        {Math.round(sortedWeatherDataList[activeCardNumber].main.temp - 273)}
+        {Math.round(sortedWeatherDataList[activeCardNumber].main.temp)}
         &deg;
       </span>
       <div className={styles["regular-weather-condition-box"]}>

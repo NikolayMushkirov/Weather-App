@@ -6,17 +6,23 @@ const AirQuality = () => {
   const { weatherData, airQualData, sortedWeatherDataList, activeCardNumber } =
     useWeatherStore();
 
-  const sortedAirQualList =
-    sortedWeatherDataList &&
-    airQualData.list.filter((airObj) => {
-      return sortedWeatherDataList.some((dataObj) => airObj.dt === dataObj.dt);
-    });
+  console.log(airQualData, "air qual");
+
+  const sortedAirQualList: AirQualDataList[] =
+    (sortedWeatherDataList.length &&
+      airQualData?.list.filter((airObj) => {
+        return sortedWeatherDataList.some(
+          (dataObj) => airObj.dt === dataObj.dt
+        );
+      })) ||
+    [];
 
   const cityName = weatherData?.city.name;
-
+  console.log(sortedAirQualList, "air qual");
   const aqi =
     sortedAirQualList.length &&
-    sortedAirQualList[activeCardNumber <= 3 ? activeCardNumber : 3].main.aqi;
+    sortedAirQualList[activeCardNumber <= 2 ? activeCardNumber : 2].main.aqi;
+
   let airStatus = "";
 
   if (aqi === 1) airStatus += "Very Good";
@@ -53,7 +59,7 @@ const AirQuality = () => {
       <div className={styles["components-box"]}>
         {sortedAirQualList.length &&
           Object.entries(
-            sortedAirQualList[activeCardNumber <= 3 ? activeCardNumber : 3]
+            sortedAirQualList[activeCardNumber <= 2 ? activeCardNumber : 2]
               .components
           ).map(([name, value]) => (
             <div

@@ -34,7 +34,7 @@ const MainWidget = ({ switchTheme }: Props) => {
             key={index}
             id={index.toString()}
             dayName={getWeekDayName(card.dt_txt)}
-            temp={Math.round(card.main.temp - 273)}
+            temp={Math.round(card.main.temp)}
             weatherStatus={card.weather[0].main}
             activeCardNumber={activeCardNumber}
             changeActiveCard={changeActiveCard}

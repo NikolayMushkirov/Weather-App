@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useWeatherStore } from "store/store";
 
+
+
 const GetWeatherData = () => {
   const {
     setSortedWeatherDataList,
@@ -16,20 +18,8 @@ const GetWeatherData = () => {
 
   const API_KEY = import.meta.env.VITE_WEATHER_APP_API_KEY;
 
-  const fetchAirQualityData = async () => {
-    const url = `https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${latitudeCoord}&lon=${longitudeCoord}&appid=${API_KEY}`;
-
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    const airData = await response.json();
-
-    return airData;
-  };
-
   const fetchWeatherData = async () => {
-    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitudeCoord}&lon=${longitudeCoord}&q=${searchValue}&appid=${API_KEY}`;
+    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitudeCoord}&lon=${longitudeCoord}&q=${searchValue}&appid=${API_KEY}&units=metric`;
 
     const response = await fetch(url);
     if (!response.ok) {
@@ -38,6 +28,18 @@ const GetWeatherData = () => {
     const forecastData = await response.json();
 
     return forecastData;
+  };
+
+  const fetchAirQualityData = async () => {
+    const url = `https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${latitudeCoord}&lon=${longitudeCoord}&appid=${API_KEY}&units=metric`;
+
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const airData = await response.json();
+
+    return airData;
   };
 
   const { data: airQualityData } = useQuery(
@@ -73,6 +75,7 @@ const GetWeatherData = () => {
     setAirQualData(airQualityData);
     setWeatherData(forecastData);
   }, [forecastData, airQualityData]);
+
   return null;
 };
 
