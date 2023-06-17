@@ -1,7 +1,5 @@
 @import "../../scss/_variables.module";
 
-
-
 .switch-checkbox {
   height: 0;
   width: 0;
@@ -15,37 +13,32 @@
   cursor: pointer;
   width: 100px;
   height: 50px;
-  background: $--dark-fourth-background-color;
+  background: $--card-bg-color;
   border-radius: 100px;
   position: relative;
   transition: background-color 0.2s;
-
-  .switch-icon {
-    content: "";
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 45px;
-    height: 45px;
-    border-radius: 45px;
-    transition: 0.2s;
-    background: #fff;
-    box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
-  }
-}
-.switch-checkbox:checked + .switch-label {
-  background: $--card-bg-color;
 }
 
-.switch-checkbox:checked + .switch-label .switch-icon {
-  left: calc(100% - 2px);
+.switch-label-checked {
+  background: $--dark-fourth-background-color;
+}
+
+.switch-icon {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 45px;
+  height: 45px;
+  border-radius: 45px;
+  transition: 0.2s;
+  background: #fff;
+  box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
+}
+
+.switch-icon-checked {
+  left: calc(100% - 1px);
   transform: translateX(-100%);
-}
-.switch-checkbox:checked + .switch-label .sun-icon {
-  opacity: 1;
-}
-.switch-checkbox:checked + .switch-label .moon-icon {
-  opacity: 0;
 }
 
 .switch-label:active .switch-icon {

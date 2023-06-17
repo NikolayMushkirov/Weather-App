@@ -13,7 +13,7 @@ const AsideWidget = () => {
     getWeekDayName,
     weatherData,
   } = useWeatherStore();
-  console.log(weatherData, "weather data");
+
   const cityName = weatherData && weatherData.city.name;
   return (
     <div className={styles["aside-widget"]}>

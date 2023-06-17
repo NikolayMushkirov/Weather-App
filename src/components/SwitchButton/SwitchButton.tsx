@@ -5,10 +5,11 @@ import sunIcon from "assets/icons/sun.svg";
 
 import styles from "./SwitchButton.module.scss";
 type Props = {
+  theme: string;
   switchTheme: () => void;
 };
 
-const SwitchButton = ({ switchTheme }: Props) => {
+const SwitchButton = ({ switchTheme, theme }: Props) => {
   return (
     <div className={styles["switch-button"]}>
       <input
@@ -17,17 +18,30 @@ const SwitchButton = ({ switchTheme }: Props) => {
         type="checkbox"
         onChange={switchTheme}
       />
-      <label className={styles["switch-label"]} htmlFor={`switch-new`}>
-        <img
-          src={sunIcon}
-          alt=""
-          className={classnames(styles["switch-icon"], styles["sun-icon"])}
-        />
-        <img
-          src={moonIcon}
-          alt=""
-          className={classnames(styles["switch-icon"], styles["moon-icon"])}
-        />
+      <label
+        className={classnames(
+          styles["switch-label"],
+          theme === "dark" && styles["switch-label-checked"]
+        )}
+        htmlFor={`switch-new`}
+      >
+        {theme === "dark" ? (
+          <img
+            src={moonIcon}
+            alt=""
+            className={classnames(styles["switch-icon"], styles["moon-icon"])}
+          />
+        ) : (
+          <img
+            src={sunIcon}
+            alt=""
+            className={classnames(
+              styles["switch-icon"],
+              styles["switch-icon-checked"],
+              styles["sun-icon"]
+            )}
+          />
+        )}
       </label>
     </div>
   );

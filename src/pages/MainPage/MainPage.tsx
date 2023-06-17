@@ -9,7 +9,8 @@ import Loader from "components/Loader/Loader";
 import styles from "./MainPage.module.scss";
 
 const MainPage = () => {
-  const { weatherData } = useWeatherStore();
+  const { sortedWeatherDataList } = useWeatherStore();
+
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [theme, setTheme] = useLocalStorage(
     "theme",
@@ -23,9 +24,9 @@ const MainPage = () => {
 
   return (
     <div className={styles["main-page"]} data-theme={theme}>
-      {weatherData ? (
+      {sortedWeatherDataList?.length ? (
         <>
-          <MainWidget switchTheme={switchTheme} />
+          <MainWidget switchTheme={switchTheme} theme={theme} />
           <AsideWidget />
         </>
       ) : (

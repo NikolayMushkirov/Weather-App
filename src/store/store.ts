@@ -54,3 +54,4 @@ export const useWeatherStore = create<WeatherStore>((set) => ({
     });
   },
 }));
+

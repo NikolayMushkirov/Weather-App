@@ -9,10 +9,11 @@ import SwitchButton from "components/SwitchButton/SwitchButton";
 import styles from "./MainWidget.module.scss";
 
 type Props = {
+  theme: string;
   switchTheme: () => void;
 };
 
-const MainWidget = ({ switchTheme }: Props) => {
+const MainWidget = ({ switchTheme, theme }: Props) => {
   const {
     sortedWeatherDataList,
     activeCardNumber,
@@ -20,12 +21,11 @@ const MainWidget = ({ switchTheme }: Props) => {
     getWeekDayName,
   } = useWeatherStore();
 
-  console.log(sortedWeatherDataList, "sorted weather");
   return (
     <div className={styles["main-widget"]}>
       <div className={styles["date-time-and-switch-btn-box"]}>
         <DateTimeDisplay />
-        <SwitchButton switchTheme={switchTheme} />
+        <SwitchButton switchTheme={switchTheme} theme={theme} />
       </div>
 
       <div className={styles["small-cards-container"]}>

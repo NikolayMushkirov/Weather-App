@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useWeatherStore } from "store/store";
 
-
-
 const GetWeatherData = () => {
   const {
     setSortedWeatherDataList,
@@ -19,40 +17,34 @@ const GetWeatherData = () => {
   const API_KEY = import.meta.env.VITE_WEATHER_APP_API_KEY;
 
   const fetchWeatherData = async () => {
-    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitudeCoord}&lon=${longitudeCoord}&q=${searchValue}&appid=${API_KEY}&units=metric`;
+    const weatherDataUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitudeCoord}&lon=${longitudeCoord}&q=${searchValue}&appid=${API_KEY}&units=metric`;
 
-    const response = await fetch(url);
-    if (!response.ok) {
+    const weatherDataResponse = await fetch(weatherDataUrl);
+    if (!weatherDataResponse.ok) {
       throw new Error("Network response was not ok");
     }
-    const forecastData = await response.json();
+    const forecastData = await weatherDataResponse.json();
 
-    return forecastData;
-  };
+    const airQualLat = forecastData.city.coord.lat || latitudeCoord;
+    const airQualLon = forecastData.city.coord.lon || longitudeCoord;
 
-  const fetchAirQualityData = async () => {
-    const url = `https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${latitudeCoord}&lon=${longitudeCoord}&appid=${API_KEY}&units=metric`;
+    const airQualUrl = `https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=${airQualLat}&lon=${airQualLon}&appid=${API_KEY}&units=metric`;
 
-    const response = await fetch(url);
-    if (!response.ok) {
+    const airQualResponse = await fetch(airQualUrl);
+    if (!airQualResponse.ok) {
       throw new Error("Network response was not ok");
     }
-    const airData = await response.json();
+    const airData = await airQualResponse.json();
 
-    return airData;
+    return { forecastData, airData };
   };
 
-  const { data: airQualityData } = useQuery(
-    ["airQualityData", latitudeCoord, longitudeCoord, searchValue],
-    fetchAirQualityData
-  );
-
-  const { data: forecastData } = useQuery(
+  const { data } = useQuery(
     ["weatherData", latitudeCoord, longitudeCoord, searchValue],
-    fetchWeatherData
+    () => fetchWeatherData()
   );
 
-  const sortedDataListArr = forecastData?.list.filter(
+  const sortedDataListArr = data?.forecastData?.list.filter(
     (item: { dt_txt: string }) => {
       if (item.dt_txt.slice(11, 19) === "15:00:00") {
         return item;
@@ -72,9 +64,9 @@ const GetWeatherData = () => {
 
   useEffect(() => {
     setSortedWeatherDataList(sortedDataListArr);
-    setAirQualData(airQualityData);
-    setWeatherData(forecastData);
-  }, [forecastData, airQualityData]);
+    setAirQualData(data?.airData);
+    setWeatherData(data?.forecastData);
+  }, [data]);
 
   return null;
 };
