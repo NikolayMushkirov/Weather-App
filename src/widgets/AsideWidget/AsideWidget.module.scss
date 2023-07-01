@@ -10,20 +10,20 @@
   background: var(--aside-widget-bg-color);
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: $--breakpoint-large) {
   .aside-widget {
     margin-right: 50px;
     padding: 30px;
     gap: 18px;
   }
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: $--breakpoint-medium) {
   .aside-widget {
     justify-content: center;
     gap: 22px;
   }
 }
-@media screen and (max-width: 950px) {
+@media screen and (max-width: $--breakpoint-small) {
   .aside-widget {
     order: -1;
     margin-right: 0;

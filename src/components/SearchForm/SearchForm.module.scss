@@ -30,8 +30,8 @@
     color: var(--text-secondary);
   }
 }
-@media screen and (max-width: 950px) {
+@media screen and (max-width: $--breakpoint-small) {
   .search-form {
-    align-self:center;
+    align-self: center;
   }
 }

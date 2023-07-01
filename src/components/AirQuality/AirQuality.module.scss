@@ -84,7 +84,7 @@
   text-transform: uppercase;
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: $--breakpoint-large) {
   .air-quality {
     max-width: 500px;
     padding: 15px;
@@ -94,7 +94,7 @@
     padding: 5px;
   }
 }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: $--breakpoint-medium) {
   .air-quality {
     max-width: 255px;
   }

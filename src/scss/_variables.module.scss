@@ -1,13 +1,11 @@
-$--main-background-color:  linear-gradient(to right, #cfd8f4, #bbc3dc);
-$--sec-background-color: #f0f5ff;
-$--third-background-color: #ffffff;
-
+$--light-main-background-color:  linear-gradient(to right, #cfd8f4, #bbc3dc);
+$--light-sec-background-color: #f0f5ff;
+$--light-third-background-color: #ffffff;
 
 $--dark-main-background-color: #767dd3;
 $--dark-sec-background-color: #313060;
 $--dark-third-background-color: #3e3c71;
 $--dark-fourth-background-color: #20214e;
-
 
 $--pink-color: #ff6ea3;
 $--orange-color: #ffb765;
@@ -22,21 +20,23 @@ $--light-grey-color: #cbcee0;
 
 $--card-bg-color:linear-gradient(90deg, rgb(0, 212, 255) 0%, rgb(106, 156, 255) 100%);
 
-
 $--text-primary: $--black-color;
 $--text-secondary: $--white-color;
 
+$--breakpoint-large: 1500px;
+$--breakpoint-medium: 1200px;
+$--breakpoint-small: 950px;
+
 :root {
-    --main-background-color: #{$--main-background-color};
-    --sec-background-color:#{$--sec-background-color};
-    --third-background-color:#{$--third-background-color};
+    --main-background-color: #{$--light-main-background-color};
+    --sec-background-color:#{$--light-sec-background-color};
+    --third-background-color:#{$--light-third-background-color};
     --text-primary: ${$--black-color};
     --text-secondary: #{$--light-blue-color};
 
-
     --sunrise-and-sunset-bg-color:#{$--light-orange-color};
     --aside-widget-bg-color: #{$--white-color};
-    --air-qual-button-bg-color: #{$--sec-background-color};
+    --air-qual-button-bg-color: #{$--light-sec-background-color};
   }
   [data-theme="dark"] {
     --main-background-color: #{$--dark-main-background-color};

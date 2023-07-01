@@ -59,14 +59,13 @@
   color: $--blue-color;
 }
 
-
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: $--breakpoint-large) {
   .sunrise-and-sunset {
     padding: 15px;
   }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: $--breakpoint-medium) {
   .info-card-wrapper {
     gap: 10px;
     flex-direction: column;

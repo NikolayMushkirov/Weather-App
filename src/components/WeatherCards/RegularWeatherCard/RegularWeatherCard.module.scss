@@ -96,13 +96,13 @@
   position: relative;
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: $--breakpoint-large) {
   .regular-weather-card {
     padding: 10px 20px;
   }
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: $--breakpoint-small) {
   .regular-weather-card {
     justify-content: center;
   }

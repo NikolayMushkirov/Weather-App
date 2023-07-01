@@ -1,16 +1,15 @@
 @import "../../scss/variables.module";
 .main-page {
-
   min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background-color: var(--main-background-color);
+  background: var(--main-background-color);
   color: var(--text-primary);
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: $--breakpoint-small) {
   .main-page {
     flex-direction: column;
   }
