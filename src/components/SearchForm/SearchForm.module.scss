@@ -11,17 +11,9 @@
   display: inline-block;
   width: 25px;
   height: 25px;
-
-
-  // background-image: url("../../assets/icons/magnifying-glass.svg");
-  // background-size: 25px 25px;
-  // background-repeat: no-repeat;
-  // background-position: right center;
-
   cursor: pointer;
 }
 .search-input {
-
   padding: 15px 8px;
   padding-left: 50px;
   outline: none;
@@ -36,6 +28,10 @@
     font-size: 18px;
     font-style: italic;
     color: var(--text-secondary);
-
+  }
+}
+@media screen and (max-width: 950px) {
+  .search-form {
+    align-self:center;
   }
 }

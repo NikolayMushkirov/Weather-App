@@ -41,7 +41,7 @@ const GetWeatherData = () => {
 
   const { data } = useQuery(
     ["weatherData", latitudeCoord, longitudeCoord, searchValue],
-    () => fetchWeatherData()
+    fetchWeatherData
   );
 
   const sortedDataListArr = data?.forecastData?.list.filter(

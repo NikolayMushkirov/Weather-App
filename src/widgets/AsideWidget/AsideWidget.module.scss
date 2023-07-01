@@ -1,11 +1,32 @@
 @import "../../scss/variables.module";
 
 .aside-widget {
-  width: 25vw;
-  padding: 40px;
+  max-width: 450px;
+  width: 100%;
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  gap: 45px;
+  gap: 32px;
   background: var(--aside-widget-bg-color);
+}
 
+@media screen and (max-width: 1500px) {
+  .aside-widget {
+    margin-right: 50px;
+    padding: 30px;
+    gap: 18px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .aside-widget {
+    justify-content: center;
+    gap: 22px;
+  }
+}
+@media screen and (max-width: 950px) {
+  .aside-widget {
+    order: -1;
+    margin-right: 0;
+    max-width: 500px;
+  }
 }

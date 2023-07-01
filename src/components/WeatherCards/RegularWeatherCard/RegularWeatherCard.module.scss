@@ -1,20 +1,15 @@
 @import "../../../scss/variables.module";
 
 .regular-weather-card {
-
   padding: 20px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-
   background: $--card-bg-color;
   color: $--white-color;
   border-radius: 20px;
-
 }
-
-
 
 .regular-icon {
   width: 150px;
@@ -74,21 +69,11 @@
 
 .regular-wind-status-wind-speed {
   position: relative;
-  // &::before {
-  //   content: "";
-  //   position: absolute;
-  //   left: -16px;
-
-  //   width: 1px;
-  //   height: 100%;
-  //   background-color: $--white-color;
-  // }
 }
 
 .regular-humidity-status-box {
   display: flex;
   gap: 20px;
-
 }
 .regular-humidity-status {
   position: relative;
@@ -109,13 +94,24 @@
 
 .regular-humidity-status-percent {
   position: relative;
-  // &::before {
-  //   content: "";
-  //   position: absolute;
-  //   left: -15px;
-  //   display: block;
-  //   width: 1px;
-  //   height: 100%;
-  //   background-color: $--white-color;
-  // }
+}
+
+@media screen and (max-width: 1500px) {
+  .regular-weather-card {
+    padding: 10px 20px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .regular-weather-card {
+    justify-content: center;
+  }
+
+  .regular-weather-condition-box {
+    display: none;
+  }
+
+  .regular-city-name {
+    align-self: center;
+  }
 }

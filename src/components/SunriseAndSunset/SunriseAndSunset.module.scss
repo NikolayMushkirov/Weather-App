@@ -1,63 +1,74 @@
-@import '../../scss/variables.module';
+@import "../../scss/variables.module";
 
 .sunrise-and-sunset {
-    max-width: 400px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background: var(--third-background-color);
-    border-radius: 20px;
+  max-width: 400px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: var(--third-background-color);
+  border-radius: 20px;
 }
 
 .title {
-    font-size: 20px;
-    font-weight: 500;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 .info-card {
-
-    padding: 15px;
-    background: var(--sunrise-and-sunset-bg-color);
-    border-radius: 10px;
+  padding: 15px;
+  background: var(--sunrise-and-sunset-bg-color);
+  border-radius: 10px;
 }
 
 .info-card-city-name {
-    align-self: flex-start;
-    font-size: 18px;
-    font-weight: 500;
+  align-self: flex-start;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 .info-card-wrapper {
-    margin-top: 10px;
-    display: flex;
-    gap: 40px;
+  margin-top: 10px;
+  display: flex;
+  gap: 40px;
 }
 
 .info-card-inner {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .info-card-box {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .info-card-icon {
-
-    width: 60px;
-    height: 60px;
-
+  width: 60px;
+  height: 60px;
 }
 
 .info-card-subtitle {
-    font-size: 14px;
-    color: $--light-grey-color;
+  font-size: 14px;
+  color: $--light-grey-color;
 }
 
 .info-card-time {
-    font-size: 18px;
-    color: $--blue-color;
+  font-size: 18px;
+  color: $--blue-color;
+}
+
+
+@media screen and (max-width: 1500px) {
+  .sunrise-and-sunset {
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .info-card-wrapper {
+    gap: 10px;
+    flex-direction: column;
+  }
 }

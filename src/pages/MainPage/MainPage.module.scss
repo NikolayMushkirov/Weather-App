@@ -1,10 +1,17 @@
-@import '../../scss/variables.module';
+@import "../../scss/variables.module";
 .main-page {
 
-    height: 100dvh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--main-background-color);
-    color: var(--text-primary);
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--main-background-color);
+  color: var(--text-primary);
+}
+
+@media screen and (max-width: 950px) {
+  .main-page {
+    flex-direction: column;
+  }
 }
