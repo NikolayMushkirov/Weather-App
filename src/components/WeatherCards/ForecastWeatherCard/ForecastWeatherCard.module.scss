@@ -1,6 +1,6 @@
 @import "../../../scss/variables.module";
 
-.regular-weather-card {
+.forecast-weather-card {
   padding: 20px 30px;
   display: flex;
   flex-direction: column;
@@ -11,18 +11,18 @@
   border-radius: 20px;
 }
 
-.regular-icon {
+.forecast-icon {
   width: 150px;
 }
 
-.regular-card-title-box {
+.forecast-card-title-box {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.regular-city-name {
+.forecast-city-name {
   font-size: 24px;
 }
 
@@ -35,37 +35,37 @@
   cursor: pointer;
 }
 
-.regular-day-name {
+.forecast-day-name {
   font-size: 24px;
 }
 
-.regular-date {
+.forecast-date {
   font-size: 20px;
 }
 
-.regular-degrees {
+.forecast-degrees {
   font-size: 52px;
   font-weight: 900;
 }
 
-.regular-weather-condition-box {
+.forecast-weather-condition-box {
   display: flex;
   flex-direction: column;
   gap: 12px;
   text-align: center;
 }
 
-.regular-weather-condition {
+.forecast-weather-condition {
   font-size: 20px;
   font-weight: 500;
 }
 
-.regular-wind-status-box {
+.forecast-wind-status-box {
   display: flex;
   gap: 15px;
 }
 
-.regular-wind-status {
+.forecast-wind-status {
   position: relative;
   font-weight: 500;
   border-right: 2px solid $--white-color;
@@ -82,15 +82,15 @@
   }
 }
 
-.regular-wind-status-wind-speed {
+.forecast-wind-status-wind-speed {
   position: relative;
 }
 
-.regular-humidity-status-box {
+.forecast-humidity-status-box {
   display: flex;
   gap: 20px;
 }
-.regular-humidity-status {
+.forecast-humidity-status {
   position: relative;
   font-weight: 500;
   border-right: 2px solid $--white-color;
@@ -107,26 +107,26 @@
   }
 }
 
-.regular-humidity-status-percent {
+.forecast-humidity-status-percent {
   position: relative;
 }
 
 @media screen and (max-width: $--breakpoint-large) {
-  .regular-weather-card {
+  .forecast-weather-card {
     padding: 10px 20px;
   }
 }
 
 @media screen and (max-width: $--breakpoint-small) {
-  .regular-weather-card {
+  .forecast-weather-card {
     justify-content: center;
   }
 
-  .regular-weather-condition-box {
+  .forecast-weather-condition-box {
     display: none;
   }
 
-  .regular-city-name {
+  .forecast-city-name {
     align-self: center;
   }
 }

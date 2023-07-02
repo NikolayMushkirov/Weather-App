@@ -1,13 +1,19 @@
+import { Routes, Route } from "react-router-dom";
+
 import MainPage from "pages/MainPage/MainPage";
 import GetWeatherData from "api/GetWeatherData";
 
 import "./App.scss";
+import WeatherForecastPage from "pages/WeatherForecastPage/WeatherForecastPage";
 
 function App() {
   return (
     <div className="App">
-      <MainPage />
-      <GetWeatherData />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="forecast" element={<WeatherForecastPage />} />
+      </Routes>
+      <GetWeatherData/>
     </div>
   );
 }

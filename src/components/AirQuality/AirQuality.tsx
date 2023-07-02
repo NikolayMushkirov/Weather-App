@@ -6,14 +6,15 @@ const AirQuality = () => {
   const { weatherData, airQualData, sortedWeatherDataList, activeCardNumber } =
     useWeatherStore();
 
-  const sortedAirQualList: AirQualDataList[] =
-    (sortedWeatherDataList.length &&
-      airQualData?.list.filter((airObj) => {
-        return sortedWeatherDataList.some(
-          (dataObj) => airObj.dt === dataObj.dt
-        );
-      })) ||
-    [];
+  const weatherDataMap = new Map();
+
+  sortedWeatherDataList.forEach((dataObj) => {
+    weatherDataMap.set(dataObj.dt, true);
+  });
+
+  const sortedAirQualList = (airQualData?.list || []).filter((airObj) =>
+    weatherDataMap.has(airObj.dt)
+  );
 
   const cityName = weatherData?.city.name;
 

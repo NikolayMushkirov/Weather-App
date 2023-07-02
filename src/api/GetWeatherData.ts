@@ -44,13 +44,9 @@ const GetWeatherData = () => {
     fetchWeatherData
   );
 
-  const sortedDataListArr = data?.forecastData?.list.filter(
-    (item: { dt_txt: string }) => {
-      if (item.dt_txt.slice(11, 19) === "15:00:00") {
-        return item;
-      }
-    }
-  );
+  const sortedDataListArr = data?.forecastData.list.filter(
+    (item: { dt_txt: string }) => item.dt_txt.endsWith("15:00:00")
+);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((pos) => {

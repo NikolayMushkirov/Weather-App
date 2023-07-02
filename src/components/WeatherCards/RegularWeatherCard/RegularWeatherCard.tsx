@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom";
+
 import { weatherIcons } from "assets/icons/icons.data";
 
 import styles from "./RegularWeatherCard.module.scss";
 
 type Props = {
   cityName: string;
-  sortedWeatherDataList: List[];
+  weatherData?: WeatherData
+  sortedWeatherDataList?: List[];
   activeCardNumber: number;
   getWeekDayName: (dt_txt: string | Date) => string;
 };
@@ -15,7 +18,7 @@ const RegularWeatherCard = ({
   activeCardNumber,
   getWeekDayName,
 }: Props) => {
-  if (!sortedWeatherDataList.length) {
+  if (!sortedWeatherDataList?.length) {
     return null;
   }
 
@@ -25,7 +28,12 @@ const RegularWeatherCard = ({
 
   return (
     <div className={styles["regular-weather-card"]}>
-      <span className={styles["regular-city-name"]}>{cityName.toString()}</span>
+      <div className={styles["regular-card-title-box"]}>
+        <span className={styles["regular-city-name"]}>
+          {cityName.toString()}
+        </span>
+        <Link to={'forecast'} className={styles["show-more"]}>Show More</Link>
+      </div>
       <img
         src={
           weatherIcons[sortedWeatherDataList[activeCardNumber].weather[0].main]
