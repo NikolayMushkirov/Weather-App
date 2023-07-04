@@ -6,63 +6,56 @@ import styles from "./RegularWeatherCard.module.scss";
 
 type Props = {
   cityName: string;
-  weatherData?: WeatherData
-  sortedWeatherDataList?: List[];
-  activeCardNumber: number;
-  getWeekDayName: (dt_txt: string | Date) => string;
+  weekDayName: string;
+  temp: number;
+  date: string;
+  condition: string;
+  windSpeed: number;
+  humidity: number;
 };
 
 const RegularWeatherCard = ({
   cityName,
-  sortedWeatherDataList,
-  activeCardNumber,
-  getWeekDayName,
+  weekDayName,
+  temp,
+  date,
+  condition,
+  windSpeed,
+  humidity,
 }: Props) => {
-  if (!sortedWeatherDataList?.length) {
-    return null;
-  }
-
-  const date = new Date(
-    sortedWeatherDataList[activeCardNumber].dt * 1000
-  ).toLocaleDateString();
-
   return (
     <div className={styles["regular-weather-card"]}>
       <div className={styles["regular-card-title-box"]}>
         <span className={styles["regular-city-name"]}>
           {cityName.toString()}
         </span>
-        <Link to={'forecast'} className={styles["show-more"]}>Show More</Link>
+        <Link to={"forecast"} className={styles["full-forecast"]}>
+        Full Forecast
+        </Link>
       </div>
       <img
-        src={
-          weatherIcons[sortedWeatherDataList[activeCardNumber].weather[0].main]
-        }
+        src={weatherIcons[condition]}
         alt="anim-icon"
         className={styles["regular-icon"]}
       />
-      <span className={styles["regular-day-name"]}>
-        {getWeekDayName(sortedWeatherDataList[activeCardNumber].dt_txt)}
-      </span>
+      <span className={styles["regular-day-name"]}>{weekDayName}</span>
       <span className={styles["regular-date"]}>{date}</span>
       <span className={styles["regular-degrees"]}>
-        {Math.round(sortedWeatherDataList[activeCardNumber].main.temp)}
+        {Math.round(temp)}
         &deg;
       </span>
       <div className={styles["regular-weather-condition-box"]}>
-        <span className={styles["regular-weather-condition"]}>
-          {sortedWeatherDataList[activeCardNumber].weather[0].main}
-        </span>
+        <span className={styles["regular-weather-condition"]}>{condition}</span>
         <div className={styles["regular-wind-status-box"]}>
           <span className={styles["regular-wind-status"]}>Wind</span>
           <span className={styles["regular-wind-status-wind-speed"]}>
-            {sortedWeatherDataList[activeCardNumber].wind.speed} m/s
+            {windSpeed} m/s
           </span>
         </div>
         <div className={styles["regular-humidity-status-box"]}>
           <span className={styles["regular-humidity-status"]}>Hum</span>
           <span className={styles["regular-humidity-status-percent"]}>
-            {sortedWeatherDataList[activeCardNumber].main.humidity} %
+            {humidity} %
           </span>
         </div>
       </div>

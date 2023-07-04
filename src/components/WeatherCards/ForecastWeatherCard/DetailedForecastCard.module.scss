@@ -1,7 +1,7 @@
 @import "../../../scss/variables.module";
 
 .forecast-weather-card {
-  padding: 20px 30px;
+  padding: 20px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,6 +9,13 @@
   background: $--card-bg-color;
   color: $--white-color;
   border-radius: 20px;
+}
+
+.forecast-icon-box {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
 }
 
 .forecast-icon {
@@ -23,16 +30,8 @@
 }
 
 .forecast-city-name {
+  text-align: center;
   font-size: 24px;
-}
-
-.show-more {
-  font-size: 20px;
-  font-style: italic;
-  color: $--white-color;
-  text-decoration: none;
-  user-select: none;
-  cursor: pointer;
 }
 
 .forecast-day-name {
@@ -40,11 +39,29 @@
 }
 
 .forecast-date {
-  font-size: 20px;
+  font-size: 22px;
+  text-align: center;
+}
+
+.forecast-time {
+  font-size: 22px;
+  font-weight: 600;
 }
 
 .forecast-degrees {
   font-size: 52px;
+  font-weight: 900;
+}
+
+.forecast-feels-like {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+}
+
+.forecast-feels-like-degrees {
+  font-size: 32px;
   font-weight: 900;
 }
 
@@ -55,6 +72,24 @@
   text-align: center;
 }
 
+.forecast-pressure-icon {
+  width: 25px;
+  height: 20px;
+}
+.forecast-pressure-status {
+  font-weight: 600;
+}
+
+.forecast-pressure-status-value {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.forecast-wind-icon {
+  width: 25px;
+  height: 20px;
+}
+
 .forecast-weather-condition {
   font-size: 20px;
   font-weight: 500;
@@ -62,54 +97,38 @@
 
 .forecast-wind-status-box {
   display: flex;
-  gap: 15px;
+  gap: 10px;
 }
 
 .forecast-wind-status {
-  position: relative;
-  font-weight: 500;
-  border-right: 2px solid $--white-color;
-  padding-right: 15px;
-  &::before {
-    content: "";
-    position: absolute;
-    top: -1px;
-    left: -40px;
-    display: block;
-    width: 30px;
-    height: 20px;
-    background-image: url("../../../assets/icons/wind-icon.svg");
-  }
+  font-weight: 600;
 }
 
-.forecast-wind-status-wind-speed {
-  position: relative;
+.forecast-wind-status-value {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .forecast-humidity-status-box {
   display: flex;
-  gap: 20px;
-}
-.forecast-humidity-status {
-  position: relative;
-  font-weight: 500;
-  border-right: 2px solid $--white-color;
-  padding-right: 17px;
-  &::before {
-    content: "";
-    position: absolute;
-    top: -1px;
-    left: -30px;
-    width: 30px;
-    height: 20px;
-    background-image: url("../../../assets/icons/drop-icon.svg");
-    background-repeat: no-repeat;
-  }
+  gap: 10px;
 }
 
-.forecast-humidity-status-percent {
-  position: relative;
+.forecast-humidity-icon {
+  width: 25px;
+  height: 20px;
 }
+
+.forecast-humidity-status {
+  font-weight: 600;
+}
+
+.forecast-humidity-status-value {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+
 
 @media screen and (max-width: $--breakpoint-large) {
   .forecast-weather-card {

@@ -1,7 +1,7 @@
 type WeatherStore = {
-  weatherData: WeatherData ;
-  sortedWeatherDataList: SortedWeatherDataList  ;
-  airQualData: AirQualityData ;
+  weatherData: WeatherData;
+  sortedWeatherDataList: SortedWeatherDataList;
+  airQualData: AirQualityData;
   searchValue: string;
   activeCardNumber: number;
   activeAirCardNumber: number;
@@ -17,7 +17,7 @@ type WeatherStore = {
   setLatitudeCoord: (lat: number) => void;
   setLongitudeCoord: (lon: number) => void;
   changeActiveCard: (e: React.MouseEvent<HTMLDivElement>) => void;
-  getWeekDayName: (dt_txt: string | Date) => string;
+  getWeekDayName: GetWeekDayName;
 };
 
 type WeatherData = {
@@ -100,3 +100,5 @@ type Wind = {
   deg: number;
   gust: number;
 };
+
+type GetWeekDayName = (dt_txt: string | Date) => string;

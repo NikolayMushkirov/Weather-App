@@ -1,5 +1,3 @@
-import useLocalStorage from "use-local-storage";
-
 import { useWeatherStore } from "store/store";
 
 import AsideWidget from "widgets/AsideWidget/AsideWidget";
@@ -8,22 +6,16 @@ import Loader from "components/Loader/Loader";
 
 import styles from "./MainPage.module.scss";
 
-const MainPage = () => {
+type Props = {
+  theme: string;
+  switchTheme: () => void;
+}
+
+const MainPage = ({ switchTheme, theme }: Props) => {
   const { sortedWeatherDataList } = useWeatherStore();
 
-  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const [theme, setTheme] = useLocalStorage(
-    "theme",
-    defaultDark ? "dark" : "light"
-  );
-
-  const switchTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-  };
-
   return (
-    <div className={styles["main-page"]} data-theme={theme}>
+    <main className={styles["main-page"]}>
       {sortedWeatherDataList?.length ? (
         <>
           <MainWidget switchTheme={switchTheme} theme={theme} />
@@ -32,7 +24,7 @@ const MainPage = () => {
       ) : (
         <Loader />
       )}
-    </div>
+    </main>
   );
 };
 

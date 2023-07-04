@@ -1,19 +1,36 @@
 import { Routes, Route } from "react-router-dom";
 
-import MainPage from "pages/MainPage/MainPage";
+import useLocalStorage from "use-local-storage";
+
 import GetWeatherData from "api/GetWeatherData";
 
+import MainPage from "pages/MainPage/MainPage";
+import DetailedForecastPage from "pages/DetailedForecastPage/DetailedForecastPage";
+
 import "./App.scss";
-import WeatherForecastPage from "pages/WeatherForecastPage/WeatherForecastPage";
 
 function App() {
+  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    defaultDark ? "dark" : "light"
+  );
+
+  const switchTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  };
+
   return (
-    <div className="App">
+    <div className="App" data-theme={theme}>
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="forecast" element={<WeatherForecastPage />} />
+        <Route
+          path="/"
+          element={<MainPage switchTheme={switchTheme} theme={theme} />}
+        />
+        <Route path="forecast" element={<DetailedForecastPage />} />
       </Routes>
-      <GetWeatherData/>
+      <GetWeatherData />
     </div>
   );
 }
