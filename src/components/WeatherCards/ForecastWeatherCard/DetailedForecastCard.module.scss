@@ -128,8 +128,6 @@
   font-weight: 600;
 }
 
-
-
 @media screen and (max-width: $--breakpoint-large) {
   .forecast-weather-card {
     padding: 10px 20px;
@@ -141,11 +139,21 @@
     justify-content: center;
   }
 
-  .forecast-weather-condition-box {
-    display: none;
-  }
-
   .forecast-city-name {
     align-self: center;
+  }
+}
+
+@media screen and (max-width: $--breakpoint-extra-small) {
+  .forecast-weather-card {
+    gap: 5px;
+  }
+  .forecast-icon {
+    width: 100px;
+    height: 90px;
+  }
+
+  .forecast-degrees {
+    font-size: 48px;
   }
 }

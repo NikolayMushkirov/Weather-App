@@ -1,3 +1,5 @@
+@import "../../scss/variables.module";
+
 .weather-forecast-page {
   height: 100dvh;
   padding: 20px;
@@ -7,4 +9,24 @@
   gap: 10px;
 
   background: var(--main-background-color);
+}
+
+
+@media screen and (max-width: $--breakpoint-medium-large) {
+    .weather-forecast-page {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media screen and (max-width: $--breakpoint-small) {
+    .weather-forecast-page {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: $--breakpoint-extra-small) {
+    .weather-forecast-page {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+    }
 }
