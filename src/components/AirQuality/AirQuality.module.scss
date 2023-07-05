@@ -103,3 +103,9 @@
     flex-wrap: wrap;
   }
 }
+@media screen and (max-width: $--breakpoint-extra-small) {
+  .components-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

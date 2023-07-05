@@ -1,7 +1,7 @@
 @import "../../scss/variables.module";
 
-.weather-forecast-page {
-  height: 100dvh;
+.detailed-forecast-page {
+  min-height: 100%;
   padding: 20px;
   display: flex;
   align-items: center;
@@ -11,22 +11,21 @@
   background: var(--main-background-color);
 }
 
-
 @media screen and (max-width: $--breakpoint-medium-large) {
-    .weather-forecast-page {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-    }
+  .detailed-forecast-page {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 @media screen and (max-width: $--breakpoint-small) {
-    .weather-forecast-page {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-    }
+  .detailed-forecast-page {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media screen and (max-width: $--breakpoint-extra-small) {
-    .weather-forecast-page {
-      display: grid;
-      grid-template-columns: repeat(1, 1fr);
-    }
+  .detailed-forecast-page {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

@@ -19,8 +19,10 @@
 }
 @media screen and (max-width: $--breakpoint-medium) {
   .aside-widget {
+    padding-top: 56px;
+    padding-bottom: 56px;
     justify-content: center;
-    gap: 22px;
+    gap: 23px;
   }
 }
 @media screen and (max-width: $--breakpoint-small) {
@@ -28,5 +30,10 @@
     order: -1;
     margin-right: 0;
     max-width: 500px;
+  }
+}
+@media screen and (max-width: $--breakpoint-extra-small) {
+  .aside-widget {
+    max-width: 464px;
   }
 }

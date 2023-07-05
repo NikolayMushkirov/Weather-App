@@ -20,7 +20,7 @@ const DetailedForecastPage = () => {
   });
 
   return (
-    <div className={styles["weather-forecast-page"]}>
+    <div className={styles["detailed-forecast-page"]}>
       {sortedForecastData?.map((card, index) => (
         <ForecastWeatherCard
           key={index}
