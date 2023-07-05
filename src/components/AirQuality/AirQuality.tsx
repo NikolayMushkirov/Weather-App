@@ -57,7 +57,7 @@ const AirQuality = () => {
             {airStatus}
           </span>
         </div>
-        <div className={styles["refresh-btn"]}>Refresh</div>
+
       </div>
       <div className={styles["components-box"]}>
         {sortedAirQualList.length &&
