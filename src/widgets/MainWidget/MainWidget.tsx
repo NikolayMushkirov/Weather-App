@@ -7,6 +7,7 @@ import AirQuality from "components/AirQuality/AirQuality";
 import SwitchButton from "components/SwitchButton/SwitchButton";
 
 import styles from "./MainWidget.module.scss";
+import useWeatherData from "hooks/useWeatherData";
 
 type Props = {
   theme: string;
@@ -14,12 +15,12 @@ type Props = {
 };
 
 const MainWidget = ({ switchTheme, theme }: Props) => {
-  const {
-    sortedWeatherDataList,
-    activeCardNumber,
-    changeActiveCard,
-    getWeekDayName,
-  } = useWeatherStore();
+  const { activeCardNumber, changeActiveCard, getWeekDayName } =
+    useWeatherStore();
+
+  const { sortedWeatherData, data } = useWeatherData();
+
+  const cityName = data?.forecastData?.city.name;
 
   return (
     <div className={styles["main-widget"]}>
@@ -29,7 +30,7 @@ const MainWidget = ({ switchTheme, theme }: Props) => {
       </div>
 
       <div className={styles["small-cards-container"]}>
-        {sortedWeatherDataList?.map((card, index) => (
+        {sortedWeatherData?.map((card: List, index: number) => (
           <SmallWeatherCard
             key={index}
             id={index.toString()}
@@ -42,7 +43,11 @@ const MainWidget = ({ switchTheme, theme }: Props) => {
         ))}
       </div>
       <div className={styles["main-widget-box"]}>
-        <AirQuality />
+        <AirQuality
+          sortedWeatherData={sortedWeatherData}
+          airQualData={data?.airData}
+          cityName = {cityName}
+        />
         <SunriseAndSunset />
       </div>
     </div>

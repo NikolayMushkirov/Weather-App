@@ -1,7 +1,4 @@
 type WeatherStore = {
-  weatherData: WeatherData;
-  sortedWeatherDataList: SortedWeatherDataList;
-  airQualData: AirQualityData;
   searchValue: string;
   activeCardNumber: number;
   activeAirCardNumber: number;
@@ -101,4 +98,4 @@ type Wind = {
   gust: number;
 };
 
-type GetWeekDayName = (dt_txt: string | Date) => string;
+type GetWeekDayName = (dt_txt: Data) => string;

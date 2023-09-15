@@ -30,7 +30,7 @@ function App() {
         />
         <Route path="forecast" element={<DetailedForecastPage />} />
       </Routes>
-      <GetWeatherData />
+      {/* <GetWeatherData /> */}
     </div>
   );
 }

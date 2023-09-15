@@ -2,21 +2,24 @@ import { useWeatherStore } from "store/store";
 
 import styles from "./AirQuality.module.scss";
 
-const AirQuality = () => {
-  const { weatherData, airQualData, sortedWeatherDataList, activeCardNumber } =
-    useWeatherStore();
+type Props = {
+  sortedWeatherData: List[];
+  airQualData: AirQualityData;
+  cityName: string;
+};
+
+const AirQuality = ({ sortedWeatherData, airQualData, cityName }: Props) => {
+  const { activeCardNumber } = useWeatherStore();
 
   const weatherDataMap = new Map();
 
-  sortedWeatherDataList.forEach((dataObj) => {
+  sortedWeatherData?.forEach((dataObj) => {
     weatherDataMap.set(dataObj.dt, true);
   });
 
   const sortedAirQualList = (airQualData?.list || []).filter((airObj) =>
     weatherDataMap.has(airObj.dt)
   );
-
-  const cityName = weatherData?.city.name;
 
   const aqi =
     sortedAirQualList.length &&
@@ -57,7 +60,6 @@ const AirQuality = () => {
             {airStatus}
           </span>
         </div>
-
       </div>
       <div className={styles["components-box"]}>
         {sortedAirQualList.length &&

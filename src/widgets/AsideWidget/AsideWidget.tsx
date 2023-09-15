@@ -3,32 +3,40 @@ import { useWeatherStore } from "store/store";
 import SearchForm from "components/SearchForm/SearchForm";
 import RegularWeatherCard from "components/WeatherCards/RegularWeatherCard/RegularWeatherCard";
 
+import useWeatherData from "hooks/useWeatherData";
+
 import styles from "./AsideWidget.module.scss";
 
 const AsideWidget = () => {
   const {
     setSearchValue,
-    sortedWeatherDataList,
     activeCardNumber,
     getWeekDayName,
-    weatherData,
+    searchValue,
   } = useWeatherStore();
+
+  const { data, sortedWeatherData } = useWeatherData();
+
+  if (!data) {
+    return <div>Is loading</div>;
+  }
+
+  const weekDayName = getWeekDayName(
+    sortedWeatherData[activeCardNumber]?.dt_txt
+  );
+
+  console.log(weekDayName, "week day");
+
+  console.log(sortedWeatherData, "aside data");
 
   return (
     <div className={styles["aside-widget"]}>
       <SearchForm setSearchValue={setSearchValue} />
       <RegularWeatherCard
-        cityName={weatherData?.city.name}
-        weekDayName={getWeekDayName(
-          sortedWeatherDataList[activeCardNumber].dt_txt
-        )}
-        date={new Date(
-          sortedWeatherDataList[activeCardNumber].dt * 1000
-        ).toLocaleDateString()}
-        temp={sortedWeatherDataList[activeCardNumber].main.temp}
-        condition={sortedWeatherDataList[activeCardNumber].weather[0].main}
-        windSpeed={sortedWeatherDataList[activeCardNumber].wind.speed}
-        humidity={sortedWeatherDataList[activeCardNumber].main.humidity}
+        cityName={data.forecastData?.city.name}
+        sortedWeatherData={sortedWeatherData}
+        activeCardNumber={activeCardNumber}
+        weekDayName={weekDayName}
       />
     </div>
   );
