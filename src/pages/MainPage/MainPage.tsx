@@ -12,8 +12,6 @@ type Props = {
 };
 
 const MainPage = ({ switchTheme, theme }: Props) => {
-  const { sortedWeatherDataList } = useWeatherStore();
-
   return (
     <main className={styles["main-page"]}>
       <>

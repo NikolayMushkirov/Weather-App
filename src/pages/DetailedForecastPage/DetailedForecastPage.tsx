@@ -3,29 +3,27 @@ import { useWeatherStore } from "store/store";
 import ForecastWeatherCard from "components/WeatherCards/ForecastWeatherCard/DetailedForecastCard";
 
 import styles from "./DetailedForecastPage.module.scss";
+import useWeatherData from "hooks/useWeatherData";
 
 const DetailedForecastPage = () => {
-  const {
-    weatherData,
-    getWeekDayName,
-    activeCardNumber,
-    sortedWeatherDataList,
-  } = useWeatherStore();
+  const { getWeekDayName, activeCardNumber } = useWeatherStore();
 
-  const sortedForecastData = weatherData?.list.filter((item) => {
+  const { data, sortedWeatherData } = useWeatherData();
+
+  const sortedForecastData = data?.forecastData?.list.filter((item: List) => {
     return (
       item.dt_txt.toString().slice(0, 10) ===
-      sortedWeatherDataList[activeCardNumber].dt_txt.toString().slice(0, 10)
+      sortedWeatherData[activeCardNumber].dt_txt.toString().slice(0, 10)
     );
   });
 
   return (
     <div className={styles["detailed-forecast-page"]}>
-      {sortedForecastData?.map((card, index) => (
+      {sortedForecastData?.map((card: List, index: number) => (
         <ForecastWeatherCard
           key={index}
           timestamp={card.dt}
-          cityName={weatherData?.city.name}
+          cityName={data?.forecastData?.city.name}
           dateTextFormat={card.dt_txt}
           temp={card.main.temp}
           feelsLikeTemp={card.main.feels_like}

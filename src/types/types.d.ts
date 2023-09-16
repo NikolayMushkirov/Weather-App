@@ -5,9 +5,7 @@ type WeatherStore = {
   latitudeCoord: number;
   longitudeCoord: number;
 
-  setWeatherData: (data: WeatherData) => void;
-  setAirQualData: (data: AirQualityData) => void;
-  setSortedWeatherDataList: (data: SortedWeatherDataList) => void;
+
   setSearchValue: (searchValue: string) => void;
   setActiveCardNumber: (activeCardNumber: number) => void;
   setActiveAirCardNumber: (activeAirCardNumber: number) => void;

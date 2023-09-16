@@ -1,17 +1,12 @@
 import { create } from "zustand";
 
 export const useWeatherStore = create<WeatherStore>((set) => ({
-
-
   searchValue: "",
   activeCardNumber: 0,
   activeAirCardNumber: 0,
   latitudeCoord: 0,
   longitudeCoord: 0,
 
-  setWeatherData: (data) => set({ weatherData: data }),
-  setAirQualData: (data) => set({ airQualData: data }),
-  setSortedWeatherDataList: (data) => set({ sortedWeatherDataList: data }),
   setSearchValue: (searchValue) => set({ searchValue }),
   setActiveCardNumber: (activeCardNumber) => set({ activeCardNumber }),
   setActiveAirCardNumber: (activeAirCardNumber) => set({ activeAirCardNumber }),
@@ -28,7 +23,7 @@ export const useWeatherStore = create<WeatherStore>((set) => ({
     });
   },
 
-  getWeekDayName: (dt_txt: Date ) => {
+  getWeekDayName: (dt_txt: Date) => {
     return new Date(dt_txt).toLocaleDateString("en-US", {
       weekday: "long",
     });
