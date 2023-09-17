@@ -3,6 +3,7 @@ import { useRef, KeyboardEvent } from "react";
 import searchIcon from "assets/icons/magnifying-glass.svg";
 
 import styles from "./SearchForm.module.scss";
+
 type Props = {
   setSearchValue: WeatherStore["setSearchValue"];
 };

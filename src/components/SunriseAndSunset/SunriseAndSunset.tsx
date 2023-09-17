@@ -1,18 +1,19 @@
-import { useWeatherStore } from "store/store";
-
 import clearDayIcon from "assets/icons/all/clear-day.svg";
 import clearNightIcon from "assets/icons/all/clear-night.svg";
+
 import styles from "./SunriseAndSunset.module.scss";
 
-const SunriseAndSunset = () => {
-  const { weatherData } = useWeatherStore();
+type Props = {
+  forecastData: WeatherData;
+};
 
-  const cityName = weatherData?.city.name;
+const SunriseAndSunset = ({ forecastData }: Props) => {
+  const cityName = forecastData?.city.name;
 
-  const sunrise = new Date(weatherData?.city.sunrise * 1000)
+  const sunrise = new Date(forecastData?.city.sunrise * 1000)
     .toLocaleString()
     .slice(12, 17);
-  const sunset = new Date(weatherData?.city.sunset * 1000)
+  const sunset = new Date(forecastData?.city.sunset * 1000)
     .toLocaleString()
     .slice(12, 17);
 

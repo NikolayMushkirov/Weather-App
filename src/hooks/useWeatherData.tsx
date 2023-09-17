@@ -1,17 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
+import { useWeatherStore } from "store/store";
+import useGeolocation from "./useGeolocation";
 
-const useWeatherData = (searchValue?: string) => {
-  const API_KEY = import.meta.env.VITE_WEATHER_APP_API_KEY;
-  const getGeoLocation = navigator.geolocation.getCurrentPosition(
-    (position) => {
-      const lat = position.coords.latitude;
-      const long = position.coords.longitude;
-      return { lat, long };
-    }
-  );
+const useWeatherData = () => {
+  const { searchValue } = useWeatherStore();
+  const geolocation = useGeolocation();
 
   const fetchWeatherData = async () => {
-    const weatherDataUrl = `https://api.openweathermap.org/data/2.5/forecast?&q=${'Bokhan'}&appid=${API_KEY}&units=metric`;
+    const API_KEY = import.meta.env.VITE_WEATHER_APP_API_KEY;
+    const weatherDataUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${geolocation?.lat}&lon=${geolocation?.lon}&q=${searchValue}&appid=${API_KEY}&units=metric`;
 
     const weatherDataResponse = await fetch(weatherDataUrl);
     if (!weatherDataResponse.ok) {
@@ -30,20 +27,15 @@ const useWeatherData = (searchValue?: string) => {
     }
     const airData = await airQualResponse.json();
 
-    return  {forecastData ,airData} ;
+    return { forecastData, airData };
   };
 
-  const { data } = useQuery(
-    ["weatherData", searchValue],
-    fetchWeatherData
-  );
-
-
+  const { data } = useQuery(["weatherData", searchValue], fetchWeatherData);
 
   const sortedWeatherData = data?.forecastData.list.filter(
     (item: { dt_txt: string }) => item.dt_txt.endsWith("15:00:00")
   );
-  return { data, sortedWeatherData  };
+  return { data, sortedWeatherData };
 };
 
 export default useWeatherData;

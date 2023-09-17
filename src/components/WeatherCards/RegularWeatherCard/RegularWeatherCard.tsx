@@ -17,13 +17,16 @@ const RegularWeatherCard = ({
   activeCardNumber,
   weekDayName,
 }: Props) => {
+
   const date = new Date(
     sortedWeatherData[activeCardNumber].dt * 1000
   ).toLocaleDateString();
+
   const temp = sortedWeatherData[activeCardNumber].main.temp;
   const condition = sortedWeatherData[activeCardNumber].weather[0].main;
   const windSpeed = sortedWeatherData[activeCardNumber].wind.speed;
   const humidity = sortedWeatherData[activeCardNumber].main.humidity;
+
   return (
     <Link to={"forecast"} style={{ textDecoration: "none" }}>
       <div className={styles["regular-weather-card"]}>

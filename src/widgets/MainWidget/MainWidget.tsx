@@ -48,7 +48,7 @@ const MainWidget = ({ switchTheme, theme }: Props) => {
           airQualData={data?.airData}
           cityName = {cityName}
         />
-        <SunriseAndSunset />
+        <SunriseAndSunset forecastData = {data?.forecastData} />
       </div>
     </div>
   );

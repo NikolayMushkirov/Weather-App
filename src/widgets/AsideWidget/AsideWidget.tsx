@@ -8,12 +8,8 @@ import useWeatherData from "hooks/useWeatherData";
 import styles from "./AsideWidget.module.scss";
 
 const AsideWidget = () => {
-  const {
-    setSearchValue,
-    activeCardNumber,
-    getWeekDayName,
-    searchValue,
-  } = useWeatherStore();
+  const { setSearchValue, activeCardNumber, getWeekDayName } =
+    useWeatherStore();
 
   const { data, sortedWeatherData } = useWeatherData();
 
@@ -24,10 +20,6 @@ const AsideWidget = () => {
   const weekDayName = getWeekDayName(
     sortedWeatherData[activeCardNumber]?.dt_txt
   );
-
-  console.log(weekDayName, "week day");
-
-  console.log(sortedWeatherData, "aside data");
 
   return (
     <div className={styles["aside-widget"]}>
