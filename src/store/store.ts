@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 export const useWeatherStore = create<WeatherStore>((set) => ({
-  searchValue: "Bokhan",
+  searchValue: "",
   activeCardNumber: 0,
   activeAirCardNumber: 0,
   latitudeCoord: 0,

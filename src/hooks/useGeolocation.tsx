@@ -7,19 +7,18 @@ const useGeolocation = () => {
 
   useEffect(() => {
     const success = (pos: GeolocationPosition) => {
-      console.log(pos, "postiton");
       setGeolocation({
         lat: pos.coords.latitude,
-        lon: pos.coords.latitude,
+        lon: pos.coords.longitude,
       });
     };
 
     const error = (error: unknown) => {
       console.log("Error getting geolocation:", error);
     };
-
     navigator.geolocation.getCurrentPosition(success, error);
   }, []);
+
   return geolocation;
 };
 

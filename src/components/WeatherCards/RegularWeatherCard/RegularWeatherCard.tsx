@@ -17,7 +17,6 @@ const RegularWeatherCard = ({
   activeCardNumber,
   weekDayName,
 }: Props) => {
-
   const date = new Date(
     sortedWeatherData[activeCardNumber].dt * 1000
   ).toLocaleDateString();
@@ -34,9 +33,6 @@ const RegularWeatherCard = ({
           <span className={styles["regular-city-name"]}>
             {cityName.toString()}
           </span>
-          <Link to={"forecast"} className={styles["full-forecast"]}>
-            Full Forecast
-          </Link>
         </div>
         <img
           src={weatherIcons[condition]}
