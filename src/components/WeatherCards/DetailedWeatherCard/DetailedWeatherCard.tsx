@@ -4,7 +4,7 @@ import windIcon from "assets/icons/wind-icon.svg";
 import humidityIcon from "assets/icons/drop-icon.svg";
 import pressureIcon from "assets/icons/pressure.svg";
 
-import styles from "./DetailedForecastCard.module.scss";
+import styles from "./DetailedWeatherCard.module.scss";
 
 type Props = {
   cityName: string;

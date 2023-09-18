@@ -13,10 +13,6 @@ const AsideWidget = () => {
 
   const { data, sortedWeatherData } = useWeatherData();
 
-  if (!data) {
-    return <div>Is loading</div>;
-  }
-
   const weekDayName = getWeekDayName(
     sortedWeatherData[activeCardNumber]?.dt_txt
   );
@@ -25,7 +21,7 @@ const AsideWidget = () => {
     <div className={styles["aside-widget"]}>
       <SearchForm setSearchValue={setSearchValue} />
       <RegularWeatherCard
-        cityName={data.forecastData?.city.name}
+        cityName={data?.forecastData?.city.name}
         sortedWeatherData={sortedWeatherData}
         activeCardNumber={activeCardNumber}
         weekDayName={weekDayName}

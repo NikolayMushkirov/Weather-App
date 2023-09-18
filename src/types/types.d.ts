@@ -2,15 +2,10 @@ type WeatherStore = {
   searchValue: string;
   activeCardNumber: number;
   activeAirCardNumber: number;
-  latitudeCoord: number;
-  longitudeCoord: number;
-
 
   setSearchValue: (searchValue: string) => void;
   setActiveCardNumber: (activeCardNumber: number) => void;
   setActiveAirCardNumber: (activeAirCardNumber: number) => void;
-  setLatitudeCoord: (lat: number) => void;
-  setLongitudeCoord: (lon: number) => void;
   changeActiveCard: (e: React.MouseEvent<HTMLDivElement>) => void;
   getWeekDayName: GetWeekDayName;
 };

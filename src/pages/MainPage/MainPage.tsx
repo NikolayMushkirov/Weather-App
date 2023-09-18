@@ -5,6 +5,7 @@ import MainWidget from "widgets/MainWidget/MainWidget";
 import Loader from "components/Loader/Loader";
 
 import styles from "./MainPage.module.scss";
+import useWeatherData from "hooks/useWeatherData";
 
 type Props = {
   theme: string;
@@ -12,12 +13,18 @@ type Props = {
 };
 
 const MainPage = ({ switchTheme, theme }: Props) => {
+  const { isLoading } = useWeatherData();
+
   return (
     <main className={styles["main-page"]}>
-      <>
-        <MainWidget switchTheme={switchTheme} theme={theme} />
-        <AsideWidget />
-      </>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <MainWidget switchTheme={switchTheme} theme={theme} />
+          <AsideWidget />
+        </>
+      )}
     </main>
   );
 };

@@ -30,14 +30,14 @@ const useWeatherData = () => {
     return { forecastData, airData };
   };
 
-  const { data } = useQuery(["weatherData", searchValue], fetchWeatherData, {
+  const { data , isLoading } = useQuery(["weatherData", searchValue], fetchWeatherData, {
     enabled: !!geolocation,
   });
 
   const sortedWeatherData = data?.forecastData.list.filter(
     (item: { dt_txt: string }) => item.dt_txt.endsWith("15:00:00")
   );
-  return { data, sortedWeatherData };
+  return { data, sortedWeatherData, isLoading };
 };
 
 export default useWeatherData;
