@@ -1,11 +1,10 @@
 type WeatherStore = {
   searchValue: string;
   activeCardNumber: number;
-  activeAirCardNumber: number;
 
   setSearchValue: (searchValue: string) => void;
   setActiveCardNumber: (activeCardNumber: number) => void;
-  setActiveAirCardNumber: (activeAirCardNumber: number) => void;
+
   changeActiveCard: (e: React.MouseEvent<HTMLDivElement>) => void;
   getWeekDayName: GetWeekDayName;
 };

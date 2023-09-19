@@ -1,6 +1,6 @@
 import { useWeatherStore } from "store/store";
 
-import ForecastWeatherCard from "components/WeatherCards/ForecastWeatherCard/DetailedForecastCard";
+import DetailedWeatherCard from "components/WeatherCards/DetailedWeatherCard/DetailedWeatherCard";
 
 import styles from "./DetailedForecastPage.module.scss";
 import useWeatherData from "hooks/useWeatherData";
@@ -20,7 +20,7 @@ const DetailedForecastPage = () => {
   return (
     <div className={styles["detailed-forecast-page"]}>
       {sortedForecastData?.map((card: List, index: number) => (
-        <ForecastWeatherCard
+        <DetailedWeatherCard
           key={index}
           timestamp={card.dt}
           cityName={data?.forecastData?.city.name}

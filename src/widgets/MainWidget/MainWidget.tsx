@@ -9,12 +9,9 @@ import SwitchButton from "components/SwitchButton/SwitchButton";
 import styles from "./MainWidget.module.scss";
 import useWeatherData from "hooks/useWeatherData";
 
-type Props = {
-  theme: string;
-  switchTheme: () => void;
-};
 
-const MainWidget = ({ switchTheme, theme }: Props) => {
+
+const MainWidget = () => {
   const { activeCardNumber, changeActiveCard, getWeekDayName } =
     useWeatherStore();
 
@@ -26,7 +23,7 @@ const MainWidget = ({ switchTheme, theme }: Props) => {
     <div className={styles["main-widget"]}>
       <div className={styles["date-time-and-switch-btn-box"]}>
         <DateTimeDisplay />
-        <SwitchButton switchTheme={switchTheme} theme={theme} />
+        <SwitchButton  />
       </div>
 
       <div className={styles["small-cards-container"]}>

@@ -19,7 +19,7 @@ type Props = {
   weekDayName: string;
 };
 
-const DetailedForecastCard = ({
+const DetailedWeatherCard = ({
   cityName,
   dateTextFormat,
   temp,
@@ -105,4 +105,4 @@ const DetailedForecastCard = ({
   );
 };
 
-export default DetailedForecastCard;
+export default DetailedWeatherCard;

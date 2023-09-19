@@ -4,12 +4,11 @@ import moonIcon from "assets/icons/moon.svg";
 import sunIcon from "assets/icons/sun.svg";
 
 import styles from "./SwitchButton.module.scss";
-type Props = {
-  theme: string;
-  switchTheme: () => void;
-};
+import useTheme from "hooks/useTheme";
 
-const SwitchButton = ({ switchTheme, theme }: Props) => {
+const SwitchButton = () => {
+  const { theme, switchTheme } = useTheme();
+
   return (
     <div className={styles["switch-button"]}>
       <input
