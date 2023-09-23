@@ -39,7 +39,6 @@ const SmallWeatherCard = ({
       <span id={id} className={styles["small-card-degree"]}>
         {temp}&deg;
       </span>
-
     </div>
   );
 };

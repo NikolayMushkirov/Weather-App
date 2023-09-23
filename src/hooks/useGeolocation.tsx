@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const useGeolocation = () => {
   const [geolocation, setGeolocation] = useState<Record<string, number> | null>(
-    null
+    null,
   );
 
   useEffect(() => {

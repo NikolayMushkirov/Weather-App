@@ -14,7 +14,7 @@ const AsideWidget = () => {
   const { data, sortedWeatherData } = useWeatherData();
 
   const weekDayName = getWeekDayName(
-    sortedWeatherData[activeCardNumber]?.dt_txt
+    sortedWeatherData[activeCardNumber]?.dt_txt,
   );
 
   return (

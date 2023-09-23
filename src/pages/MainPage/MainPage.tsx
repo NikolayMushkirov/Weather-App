@@ -5,8 +5,6 @@ import Loader from "components/Loader/Loader";
 import styles from "./MainPage.module.scss";
 import useWeatherData from "hooks/useWeatherData";
 
-
-
 const MainPage = () => {
   const { isLoading } = useWeatherData();
 

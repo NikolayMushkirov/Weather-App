@@ -18,7 +18,7 @@ const RegularWeatherCard = ({
   weekDayName,
 }: Props) => {
   const date = new Date(
-    sortedWeatherData[activeCardNumber].dt * 1000
+    sortedWeatherData[activeCardNumber].dt * 1000,
   ).toLocaleDateString();
 
   const temp = sortedWeatherData[activeCardNumber].main.temp;

@@ -20,7 +20,7 @@ const SwitchButton = () => {
       <label
         className={classnames(
           styles["switch-label"],
-          theme === "dark" && styles["switch-label-checked"]
+          theme === "dark" && styles["switch-label-checked"],
         )}
         htmlFor={`switch-new`}
       >
@@ -37,7 +37,7 @@ const SwitchButton = () => {
             className={classnames(
               styles["switch-icon"],
               styles["switch-icon-checked"],
-              styles["sun-icon"]
+              styles["sun-icon"],
             )}
           />
         )}

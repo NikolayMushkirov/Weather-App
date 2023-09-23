@@ -14,7 +14,7 @@ import Tornado from "./all/tornado.svg";
 import Clear from "./all/clear-day.svg";
 import Clouds from "./all/cloudy.svg";
 
- type WeatherIcons = {
+type WeatherIcons = {
   [key: string]: string;
 };
 
