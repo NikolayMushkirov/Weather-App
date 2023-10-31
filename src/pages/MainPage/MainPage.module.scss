@@ -9,8 +9,12 @@
   color: var(--text-primary);
 }
 
+.main-wrapper {
+  display: flex;
+}
+
 @media screen and (max-width: $--breakpoint-small) {
-  .main-page {
+  .main-wrapper {
     flex-direction: column;
   }
 }

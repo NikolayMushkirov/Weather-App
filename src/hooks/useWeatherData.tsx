@@ -35,11 +35,11 @@ const useWeatherData = () => {
     fetchWeatherData,
     {
       enabled: !!geolocation,
-    },
+    }
   );
 
   const sortedWeatherData = data?.forecastData.list.filter(
-    (item: { dt_txt: string }) => item.dt_txt.endsWith("15:00:00"),
+    (item: { dt_txt: string }) => item.dt_txt.endsWith("15:00:00")
   );
   return { data, sortedWeatherData, isLoading };
 };

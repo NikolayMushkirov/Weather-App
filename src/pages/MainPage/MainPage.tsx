@@ -13,10 +13,10 @@ const MainPage = () => {
       {isLoading ? (
         <Loader />
       ) : (
-        <>
+        <div className={styles["main-wrapper"]}>
           <MainWidget />
           <AsideWidget />
-        </>
+        </div>
       )}
     </main>
   );

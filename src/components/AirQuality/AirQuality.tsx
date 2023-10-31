@@ -11,6 +11,9 @@ type Props = {
 const AirQuality = ({ sortedWeatherData, airQualData, cityName }: Props) => {
   const { activeCardNumber } = useWeatherStore();
 
+  if (!airQualData.list.length) {
+    return null;
+  }
   const weatherDataMap = new Map();
 
   sortedWeatherData?.forEach((dataObj) => {
@@ -18,7 +21,7 @@ const AirQuality = ({ sortedWeatherData, airQualData, cityName }: Props) => {
   });
 
   const sortedAirQualList = (airQualData?.list || []).filter((airObj) =>
-    weatherDataMap.has(airObj.dt),
+    weatherDataMap.has(airObj.dt)
   );
 
   const aqi =
@@ -68,7 +71,7 @@ const AirQuality = ({ sortedWeatherData, airQualData, cityName }: Props) => {
               activeCardNumber <= sortedAirQualList.length - 1
                 ? activeCardNumber
                 : sortedAirQualList.length - 1
-            ].components,
+            ].components
           ).map(([name, value]) => (
             <div
               style={{
