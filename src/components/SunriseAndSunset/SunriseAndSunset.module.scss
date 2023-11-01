@@ -16,14 +16,16 @@
 }
 
 .info-card {
+  display: flex;
+  flex-direction: column;
   padding: 15px;
   background: var(--sunrise-and-sunset-bg-color);
   border-radius: 10px;
 }
 
 .info-card-city-name {
-  align-self: flex-start;
-  font-size: 18px;
+  align-self: center;
+  font-size: 20px;
   font-weight: 500;
 }
 

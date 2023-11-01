@@ -51,7 +51,7 @@ const AirQuality = ({ sortedWeatherData, airQualData, cityName }: Props) => {
   return (
     <div className={styles["air-quality"]}>
       <div className={styles["title-box"]}>
-        <h2 className={styles.title}>Air Quality Index</h2>
+        <h2 className={styles.title}>Air Quality</h2>
         <span className={styles["city-name"]}>{cityName}</span>
       </div>
       <div className={styles["air-quality-status"]}>

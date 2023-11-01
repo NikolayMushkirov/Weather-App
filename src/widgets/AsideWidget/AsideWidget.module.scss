@@ -29,11 +29,7 @@
   .aside-widget {
     order: -1;
     margin-right: 0;
-    max-width: 500px;
-  }
-}
-@media screen and (max-width: $--breakpoint-extra-small) {
-  .aside-widget {
-    max-width: 464px;
+    max-width: 510px;
+    width: 100%;
   }
 }
