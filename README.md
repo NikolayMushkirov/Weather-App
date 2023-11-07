@@ -6,14 +6,6 @@
 
 ![Weather-App screenshot](./public/screenshots/WeatherApp.PNG)
 
-## Table of Contents
-
-- [General Info](#general-information)
-- [Technologies Used](#technologies-used)
-- [Features](#features)
-- [Project Status](#project-status)
-- [Room for Improvement](#room-for-improvement)
-
 ## Technologies Used
 
 - React - version 18.2.0
