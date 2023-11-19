@@ -11,9 +11,6 @@ type Props = {
 const AirQuality = ({ sortedWeatherData, airQualData, cityName }: Props) => {
   const { activeCardNumber } = useWeatherStore();
 
-  if (!airQualData.list.length) {
-    return null;
-  }
   const weatherDataMap = new Map();
 
   sortedWeatherData?.forEach((dataObj) => {

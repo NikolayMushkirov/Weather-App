@@ -32,10 +32,13 @@ const useWeatherData = () => {
       airQualResponse.json(),
     ]);
 
-    return { forecastData, airData };
+    return {
+      forecastData: forecastData as WeatherData,
+      airData: airData as AirQualityData,
+    };
   };
 
-  const { data, isLoading } = useQuery(
+  const { data, isLoading, isSuccess } = useQuery(
     ["weatherData", searchValue],
     fetchWeatherData,
     {
@@ -43,11 +46,7 @@ const useWeatherData = () => {
     }
   );
 
-  const filteredWeatherData = data?.forecastData.list.filter(
-    (item: { dt_txt: string }) => item.dt_txt.endsWith("15:00:00")
-  );
-  const sortedWeatherData = filteredWeatherData;
-  return { data, sortedWeatherData, isLoading };
+  return { data, isLoading, isSuccess };
 };
 
 export default useWeatherData;

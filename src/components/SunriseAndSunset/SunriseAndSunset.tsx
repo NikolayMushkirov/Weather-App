@@ -5,11 +5,10 @@ import styles from "./SunriseAndSunset.module.scss";
 
 type Props = {
   forecastData: WeatherData;
+  cityName: string;
 };
 
-const SunriseAndSunset = ({ forecastData }: Props) => {
-  const cityName = forecastData?.city.name;
-
+const SunriseAndSunset = ({ forecastData, cityName }: Props) => {
   const sunrise = new Date(forecastData?.city.sunrise * 1000)
     .toLocaleString()
     .slice(12, 17);

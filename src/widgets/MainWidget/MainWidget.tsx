@@ -8,14 +8,21 @@ import SwitchButton from "components/SwitchButton/SwitchButton";
 
 import styles from "./MainWidget.module.scss";
 import useWeatherData from "hooks/useWeatherData";
+import { useSortedWeatherData } from "hooks/useSortedWeatherData";
 
 const MainWidget = () => {
   const { activeCardNumber, changeActiveCard, getWeekDayName } =
     useWeatherStore();
 
-  const { sortedWeatherData, data } = useWeatherData();
+  const { data } = useWeatherData();
 
-  const cityName = data?.forecastData?.city.name;
+  const sortedWeatherData = useSortedWeatherData(data?.forecastData);
+
+  if (!data) {
+    return null;
+  }
+
+  const cityName = data && data?.forecastData?.city.name;
 
   return (
     <div className={styles["main-widget"]}>
@@ -43,7 +50,10 @@ const MainWidget = () => {
           airQualData={data?.airData}
           cityName={cityName}
         />
-        <SunriseAndSunset forecastData={data?.forecastData} />
+        <SunriseAndSunset
+          forecastData={data?.forecastData}
+          cityName={cityName}
+        />
       </div>
     </div>
   );

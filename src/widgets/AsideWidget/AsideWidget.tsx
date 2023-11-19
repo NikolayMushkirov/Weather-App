@@ -6,22 +6,29 @@ import RegularWeatherCard from "components/WeatherCards/RegularWeatherCard/Regul
 import useWeatherData from "hooks/useWeatherData";
 
 import styles from "./AsideWidget.module.scss";
+import { useSortedWeatherData } from "hooks/useSortedWeatherData";
 
 const AsideWidget = () => {
   const { setSearchValue, activeCardNumber, getWeekDayName } =
     useWeatherStore();
 
-  const { data, sortedWeatherData } = useWeatherData();
+  const { data } = useWeatherData();
+  const sortedWeatherData = useSortedWeatherData(data?.forecastData);
+
+  if (!data) {
+    return null;
+  }
 
   const weekDayName = getWeekDayName(
     sortedWeatherData[activeCardNumber]?.dt_txt
   );
+  const cityName = data?.forecastData?.city.name;
 
   return (
     <div className={styles["aside-widget"]}>
       <SearchForm setSearchValue={setSearchValue} />
       <RegularWeatherCard
-        cityName={data?.forecastData?.city.name}
+        cityName={cityName}
         sortedWeatherData={sortedWeatherData}
         activeCardNumber={activeCardNumber}
         weekDayName={weekDayName}

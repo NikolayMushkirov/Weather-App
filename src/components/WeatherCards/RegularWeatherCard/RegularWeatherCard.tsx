@@ -31,7 +31,7 @@ const RegularWeatherCard = ({
       <div className={styles["regular-weather-card"]}>
         <div className={styles["regular-card-title-box"]}>
           <span className={styles["regular-city-name"]}>
-            {cityName.toString()}
+            {cityName?.toString()}
           </span>
         </div>
         <img
