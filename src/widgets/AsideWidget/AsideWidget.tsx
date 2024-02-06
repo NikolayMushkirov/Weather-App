@@ -6,18 +6,14 @@ import RegularWeatherCard from "components/WeatherCards/RegularWeatherCard/Regul
 import useWeatherData from "hooks/useWeatherData";
 
 import styles from "./AsideWidget.module.scss";
-import { useSortedWeatherData } from "hooks/useSortedWeatherData";
 
 const AsideWidget = () => {
   const { setSearchValue, activeCardNumber, getWeekDayName } =
     useWeatherStore();
 
-  const { data } = useWeatherData();
-  const sortedWeatherData = useSortedWeatherData(data?.forecastData);
+  const { data, sortedWeatherData } = useWeatherData();
 
-  if (!data) {
-    return null;
-  }
+  if (!sortedWeatherData) return null;
 
   const weekDayName = getWeekDayName(
     sortedWeatherData[activeCardNumber]?.dt_txt

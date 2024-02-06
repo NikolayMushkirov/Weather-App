@@ -5,10 +5,10 @@ import { weatherIcons } from "assets/icons/icons.data";
 import styles from "./RegularWeatherCard.module.scss";
 
 type Props = {
-  cityName: string;
+  cityName: string | undefined;
   activeCardNumber: number;
   weekDayName: string;
-  sortedWeatherData: SortedWeatherDataList;
+  sortedWeatherData: SortedWeatherDataList | undefined;
 };
 
 const RegularWeatherCard = ({
@@ -17,8 +17,11 @@ const RegularWeatherCard = ({
   activeCardNumber,
   weekDayName,
 }: Props) => {
+
+  if (!sortedWeatherData) return null;
+
   const date = new Date(
-    sortedWeatherData[activeCardNumber].dt * 1000,
+    sortedWeatherData[activeCardNumber].dt * 1000
   ).toLocaleDateString();
 
   const temp = sortedWeatherData[activeCardNumber].main.temp;

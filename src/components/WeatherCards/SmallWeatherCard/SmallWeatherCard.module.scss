@@ -24,7 +24,7 @@
 }
 
 .small-card-active {
-  background: $--card-bg-color;
+  background: var(--weather-card-color);
   color: $--white-color;
 }
 

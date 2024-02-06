@@ -3,7 +3,7 @@ import { useWeatherStore } from "store/store";
 import styles from "./AirQuality.module.scss";
 
 type Props = {
-  sortedWeatherData: List[];
+  sortedWeatherData: List[] | undefined;
   airQualData: AirQualityData;
   cityName: string;
 };

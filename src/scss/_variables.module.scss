@@ -23,6 +23,11 @@ $--card-bg-color: linear-gradient(
   rgb(0, 212, 255) 0%,
   rgb(106, 156, 255) 100%
 );
+$--dark-card-bg-color: linear-gradient(
+  90deg,
+  rgba(46, 93, 146, 1) 0%,
+  rgba(0, 172, 255, 1) 100%
+);
 
 $--text-primary: $--black-color;
 $--text-secondary: $--white-color;
@@ -44,6 +49,7 @@ $--breakpoint-very-small: 450px;
   --sunrise-and-sunset-bg-color: #{$--light-orange-color};
   --aside-widget-bg-color: #{$--white-color};
   --air-qual-button-bg-color: #{$--light-sec-background-color};
+  --weather-card-color: #{$--card-bg-color};
 }
 [data-theme="dark"] {
   --main-background-color: #{$--dark-main-background-color};
@@ -55,4 +61,5 @@ $--breakpoint-very-small: 450px;
   --sunrise-and-sunset-bg-color: #{$--dark-sec-background-color};
   --aside-widget-bg-color: #{$--dark-fourth-background-color};
   --air-qual-button-bg-color: #{$--blue-color};
+  --weather-card-color: #{$--dark-card-bg-color};
 }

@@ -1,6 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
+
 import { useWeatherStore } from "store/store";
+
+import { sortForecastData } from "utils/sortForecastData";
+
 import useGeolocation from "./useGeolocation";
+
 
 const useWeatherData = () => {
   const { searchValue } = useWeatherStore();
@@ -46,7 +51,9 @@ const useWeatherData = () => {
     }
   );
 
-  return { data, isLoading, isSuccess };
+  const sortedWeatherData = sortForecastData(data?.forecastData);
+
+  return { data, sortedWeatherData, isLoading, isSuccess };
 };
 
 export default useWeatherData;
