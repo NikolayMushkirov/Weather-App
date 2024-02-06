@@ -1,10 +1,10 @@
 type WeatherStore = {
   searchValue: string;
   activeCardNumber: number;
-  modalIsOpen : boolean;
+  modalIsOpen: boolean;
 
-  handleOpenModal : () => void
-  handleCloseModal : () => void
+  handleOpenModal: () => void;
+  handleCloseModal: () => void;
 
   setSearchValue: (searchValue: string) => void;
   setActiveCardNumber: (activeCardNumber: number) => void;
@@ -102,7 +102,7 @@ declare module "*.module.scss" {
 }
 
 declare module "*.svg" {
-  import React = require('react');
+  import React = require("react");
   export const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
   const src: string;
   export default src;

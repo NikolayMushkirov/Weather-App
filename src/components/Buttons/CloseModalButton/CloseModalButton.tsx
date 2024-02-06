@@ -8,7 +8,7 @@ type Props = {
 const CloseModalButton = ({ handleCloseModal }: Props) => {
   return (
     <button className={styles["close-button"]} onClick={handleCloseModal}>
-      <img className={styles['close-icon']} src={closeIcon} />
+      <img className={styles["close-icon"]} src={closeIcon} />
     </button>
   );
 };

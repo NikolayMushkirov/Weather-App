@@ -1,15 +1,15 @@
 import { useWeatherStore } from "store/store";
 
+import useWeatherData from "hooks/useWeatherData";
+
 import DateTimeDisplay from "components/DateTimeDisplay/DateTimeDisplay";
 import SmallWeatherCard from "components/WeatherCards/SmallWeatherCard/SmallWeatherCard";
 import SunriseAndSunset from "components/SunriseAndSunset/SunriseAndSunset";
 import AirQuality from "components/AirQuality/AirQuality";
 import SwitchButton from "components/SwitchButton/SwitchButton";
+import ForecastModal from "components/ForecastModal/ForecastModal";
 
 import styles from "./MainWidget.module.scss";
-import useWeatherData from "hooks/useWeatherData";
-import ForecastModal from "components/ForecastModal/ForecastModal";
-import { useState } from "react";
 
 const MainWidget = () => {
   const {

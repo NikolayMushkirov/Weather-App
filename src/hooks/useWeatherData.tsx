@@ -6,7 +6,6 @@ import { sortForecastData } from "utils/sortForecastData";
 
 import useGeolocation from "./useGeolocation";
 
-
 const useWeatherData = () => {
   const { searchValue } = useWeatherStore();
   const geolocation = useGeolocation();
@@ -23,12 +22,12 @@ const useWeatherData = () => {
 
     if (!weatherDataResponse.ok) {
       throw new Error(
-        `Network response for weather data was not ok: ${weatherDataResponse.status} - ${weatherDataResponse.statusText}`
+        `Network response for weather data was not ok: ${weatherDataResponse.status} - ${weatherDataResponse.statusText}`,
       );
     }
     if (!airQualResponse.ok) {
       throw new Error(
-        `Network response for air quality data was not ok: ${airQualResponse.status} - ${airQualResponse.statusText}`
+        `Network response for air quality data was not ok: ${airQualResponse.status} - ${airQualResponse.statusText}`,
       );
     }
 
@@ -48,7 +47,7 @@ const useWeatherData = () => {
     fetchWeatherData,
     {
       enabled: !!geolocation,
-    }
+    },
   );
 
   const sortedWeatherData = sortForecastData(data?.forecastData);

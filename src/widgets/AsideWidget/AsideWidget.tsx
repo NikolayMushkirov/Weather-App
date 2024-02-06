@@ -16,7 +16,7 @@ const AsideWidget = () => {
   if (!sortedWeatherData) return null;
 
   const weekDayName = getWeekDayName(
-    sortedWeatherData[activeCardNumber]?.dt_txt
+    sortedWeatherData[activeCardNumber]?.dt_txt,
   );
   const cityName = data?.forecastData?.city.name;
 
@@ -24,7 +24,7 @@ const AsideWidget = () => {
     <div className={styles["aside-widget"]}>
       <SearchForm setSearchValue={setSearchValue} />
       <RegularWeatherCard
-      handleOpenModal = {handleOpenModal}
+        handleOpenModal={handleOpenModal}
         cityName={cityName}
         sortedWeatherData={sortedWeatherData}
         activeCardNumber={activeCardNumber}
