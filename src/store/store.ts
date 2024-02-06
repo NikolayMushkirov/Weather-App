@@ -3,6 +3,10 @@ import { create } from "zustand";
 export const useWeatherStore = create<WeatherStore>((set) => ({
   searchValue: "",
   activeCardNumber: 0,
+  modalIsOpen: false,
+
+  handleOpenModal: () => set({ modalIsOpen: true }),
+  handleCloseModal: () => set({ modalIsOpen: false }),
 
   setSearchValue: (searchValue) => set({ searchValue }),
   setActiveCardNumber: (activeCardNumber) => set({ activeCardNumber }),

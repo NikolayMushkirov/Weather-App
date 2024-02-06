@@ -10,6 +10,8 @@ const DetailedForecastPage = () => {
 
   const { data, sortedWeatherData } = useWeatherData();
 
+  if(!sortedWeatherData) return null
+
   const sortedForecastData = data?.forecastData?.list.filter((item: List) => {
     return (
       item.dt_txt.toString().slice(0, 10) ===

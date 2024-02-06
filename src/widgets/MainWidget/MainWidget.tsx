@@ -8,21 +8,40 @@ import SwitchButton from "components/SwitchButton/SwitchButton";
 
 import styles from "./MainWidget.module.scss";
 import useWeatherData from "hooks/useWeatherData";
+import ForecastModal from "components/ForecastModal/ForecastModal";
+import { useState } from "react";
 
 const MainWidget = () => {
-  const { activeCardNumber, changeActiveCard, getWeekDayName } =
-    useWeatherStore();
+  const {
+    activeCardNumber,
+    changeActiveCard,
+    getWeekDayName,
+    modalIsOpen,
+    handleOpenModal,
+    handleCloseModal,
+  } = useWeatherStore();
 
   const { data, sortedWeatherData } = useWeatherData();
 
-  if (!data) {
+  if (!sortedWeatherData || !data) {
     return null;
   }
 
   const cityName = data?.forecastData?.city.name;
+  const activeCardDateInfo = sortedWeatherData[activeCardNumber].dt_txt
+    .toString()
+    .slice(0, 10);
 
   return (
     <div className={styles["main-widget"]}>
+      <ForecastModal
+        modalIsOpen={modalIsOpen}
+        forecastData={data?.forecastData}
+        activeCardDateInfo={activeCardDateInfo}
+        cityName={cityName}
+        getWeekDayName={getWeekDayName}
+        handleCloseModal={handleCloseModal}
+      />
       <div className={styles["date-time-and-switch-btn-box"]}>
         <DateTimeDisplay />
         <SwitchButton />
@@ -38,6 +57,7 @@ const MainWidget = () => {
             weatherStatus={card.weather[0].main}
             activeCardNumber={activeCardNumber}
             changeActiveCard={changeActiveCard}
+            handleOpenModal={handleOpenModal}
           />
         ))}
       </div>

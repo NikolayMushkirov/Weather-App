@@ -7,8 +7,8 @@ import pressureIcon from "assets/icons/pressure.svg";
 import styles from "./DetailedWeatherCard.module.scss";
 
 type Props = {
-  cityName: string;
-  dateTextFormat: Date;
+  cityName?: string;
+  dateTextFormat: Date | string;
   temp: number;
   condition: string;
   windSpeed: number;
@@ -41,29 +41,27 @@ const DetailedWeatherCard = ({
   return (
     <div className={styles["forecast-weather-card"]}>
       <span className={styles["forecast-city-name"]}>{cityName}</span>
+      <span className={styles["forecast-date"]}>{date}</span>
+      <span className={styles["forecast-day-name"]}>{weekDayName}</span>
+      <span className={styles["forecast-time"]}>{time}</span>
       <img
         src={weatherIcons[condition]}
         alt="anim-icon"
         className={styles["forecast-icon"]}
       />
-      <span className={styles["forecast-day-name"]}>{weekDayName}</span>
-      <span className={styles["forecast-time"]}>{time}</span>
-      <span className={styles["forecast-date"]}>{date}</span>
+      <span className={styles["forecast-weather-condition"]}>{condition}</span>
       <span className={styles["forecast-degrees"]}>
         {Math.round(temp)}
         &deg;
       </span>
       <span className={styles["forecast-feels-like"]}>
-        Feels Like
+        Feels Like:
         <span className={styles["forecast-feels-like-degrees"]}>
           {Math.round(feelsLikeTemp)}
           &deg;
         </span>
       </span>
       <div className={styles["forecast-weather-condition-box"]}>
-        <span className={styles["forecast-weather-condition"]}>
-          {condition}
-        </span>
         <div className={styles["forecast-pressure-box"]}>
           <div className={styles["forecast-icon-box"]}>
             <img

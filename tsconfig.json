@@ -5,6 +5,7 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "baseUrl": "./src",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
 
     /* Bundler mode */
     "moduleResolution": "bundler",

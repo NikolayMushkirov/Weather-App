@@ -1,6 +1,10 @@
 type WeatherStore = {
   searchValue: string;
   activeCardNumber: number;
+  modalIsOpen : boolean;
+
+  handleOpenModal : () => void
+  handleCloseModal : () => void
 
   setSearchValue: (searchValue: string) => void;
   setActiveCardNumber: (activeCardNumber: number) => void;
@@ -91,3 +95,15 @@ type Wind = {
 };
 
 type GetWeekDayName = (dt_txt: Data) => string;
+
+declare module "*.module.scss" {
+  const styles: { [className: string]: string };
+  export default styles;
+}
+
+declare module "*.svg" {
+  import React = require('react');
+  export const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
+  const src: string;
+  export default src;
+}

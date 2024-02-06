@@ -2,11 +2,14 @@ import { weatherIcons } from "assets/icons/icons.data";
 
 import styles from "./SmallWeatherCard.module.scss";
 
-type Props = Partial<WeatherStore> & {
+type Props = {
   dayName: string;
   id: string;
   temp: number;
   weatherStatus: string;
+  handleOpenModal: () => void;
+  changeActiveCard: (e: React.MouseEvent<HTMLDivElement>) => void;
+  activeCardNumber: number;
 };
 
 const SmallWeatherCard = ({
@@ -16,10 +19,19 @@ const SmallWeatherCard = ({
   changeActiveCard,
   id,
   activeCardNumber,
+  handleOpenModal,
 }: Props) => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (activeCardNumber === Number(e.currentTarget.id)) {
+      handleOpenModal();
+    } else {
+      changeActiveCard(e);
+    }
+  };
+
   return (
     <div
-      onClick={changeActiveCard}
+      onClick={handleClick}
       id={id}
       className={
         activeCardNumber === Number(id)

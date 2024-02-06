@@ -1,0 +1,20 @@
+@import "../../../scss/variables.module";
+
+.close-button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $--dark-main-background-color;
+  border-radius: 20%;
+  &:hover {
+    scale: 1.1;
+    transition: all .1s;
+  }
+}
+
+.close-icon {
+  width: 40px;
+  height: 40px;
+}
