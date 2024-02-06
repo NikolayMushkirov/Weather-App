@@ -2,7 +2,7 @@
 
 ## Description
 > My weather application is a user-friendly interface that allows users to view current weather conditions in various cities around the world. The app utilizes the OpenWeatherMap API to provide up-to-date information on temperature, humidity, wind speed, and atmospheric pressure.
-> 
+>
 > Live demo [_here_](https://weather-app-theta-ruddy.vercel.app/).
 
 ![Weather-App screenshot](./public/screenshots/WeatherApp.PNG)
@@ -13,7 +13,6 @@
 - Typescript - version 5.0.2
 - React-Query - version 4.29.5
 - Zustand - version 4.3.7
-- React-Router-Dom - version 6.14.1
 - Sass - version 1.62.1
 
 ## Features
