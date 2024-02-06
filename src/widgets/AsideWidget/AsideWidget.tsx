@@ -8,7 +8,7 @@ import useWeatherData from "hooks/useWeatherData";
 import styles from "./AsideWidget.module.scss";
 
 const AsideWidget = () => {
-  const { setSearchValue, activeCardNumber, getWeekDayName } =
+  const { setSearchValue, activeCardNumber, getWeekDayName, handleOpenModal } =
     useWeatherStore();
 
   const { data, sortedWeatherData } = useWeatherData();
@@ -24,6 +24,7 @@ const AsideWidget = () => {
     <div className={styles["aside-widget"]}>
       <SearchForm setSearchValue={setSearchValue} />
       <RegularWeatherCard
+      handleOpenModal = {handleOpenModal}
         cityName={cityName}
         sortedWeatherData={sortedWeatherData}
         activeCardNumber={activeCardNumber}
