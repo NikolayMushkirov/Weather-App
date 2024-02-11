@@ -1,19 +1,31 @@
 @import "../../scss/variables.module";
 
 .modal {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  padding: 30px 15px;
+
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-auto-flow: row;
+  gap: 15px;
   align-items: center;
   justify-content: center;
-  background: $--dark-sec-background-color;
-}
-.modal-container {
-  width: 100%;
-  height: 80%;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
+  background: rgba($--dark-fourth-background-color, 0.6);
+
+  overflow: auto;
   font-family: "Roboto", sans-serif;
+}
+
+.modal-button-container {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50% , -100%);
+}
+
+@media screen and (max-width : $--breakpoint-large)  {
+  .modal-button-container {
+    transform: translate(-50% , -10%);
+  }
 }

@@ -29,7 +29,7 @@
 }
 
 .forecast-icon {
-  width: 150px;
+  width: 120px;
 }
 
 .forecast-card-title-box {
@@ -139,32 +139,3 @@
   font-weight: 600;
 }
 
-@media screen and (max-width: $--breakpoint-large) {
-  .forecast-weather-card {
-    padding: 10px 20px;
-  }
-}
-
-@media screen and (max-width: $--breakpoint-small) {
-  .forecast-weather-card {
-    justify-content: center;
-  }
-
-  .forecast-city-name {
-    align-self: center;
-  }
-}
-
-@media screen and (max-width: $--breakpoint-extra-small) {
-  .forecast-weather-card {
-    gap: 5px;
-  }
-  .forecast-icon {
-    width: 100px;
-    height: 90px;
-  }
-
-  .forecast-degrees {
-    font-size: 48px;
-  }
-}

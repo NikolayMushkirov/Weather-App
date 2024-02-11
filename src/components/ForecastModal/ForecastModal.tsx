@@ -27,24 +27,24 @@ const ForecastModal = ({
 
   return (
     <Modal isOpen={modalIsOpen} className={styles.modal}>
-      <div className={styles["modal-container"]}>
-        {sortedForecastData?.map((card: List, index: number) => (
-          <DetailedWeatherCard
-            key={index}
-            timestamp={card.dt}
-            cityName={cityName}
-            dateTextFormat={card.dt_txt}
-            temp={card.main.temp}
-            feelsLikeTemp={card.main.feels_like}
-            pressure={card.main.pressure}
-            condition={card.weather[0].main}
-            windSpeed={card.wind.speed}
-            humidity={card.main.humidity}
-            weekDayName={getWeekDayName(card.dt_txt)}
-          />
-        ))}
+      {sortedForecastData?.map((card: List, index: number) => (
+        <DetailedWeatherCard
+          key={index}
+          timestamp={card.dt}
+          cityName={cityName}
+          dateTextFormat={card.dt_txt}
+          temp={card.main.temp}
+          feelsLikeTemp={card.main.feels_like}
+          pressure={card.main.pressure}
+          condition={card.weather[0].main}
+          windSpeed={card.wind.speed}
+          humidity={card.main.humidity}
+          weekDayName={getWeekDayName(card.dt_txt)}
+        />
+      ))}
+      <div className={styles['modal-button-container']}>
+        <CloseModalButton handleCloseModal={handleCloseModal} />
       </div>
-      <CloseModalButton handleCloseModal={handleCloseModal} />
     </Modal>
   );
 };

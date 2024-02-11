@@ -7,9 +7,10 @@ type Props = {
 
 const CloseModalButton = ({ handleCloseModal }: Props) => {
   return (
-    <button className={styles["close-button"]} onClick={handleCloseModal}>
-      <img className={styles["close-icon"]} src={closeIcon} />
-    </button>
+    <div onClick={handleCloseModal} className={styles["close-container"]}>
+      <div className={styles.leftright}></div>
+      <div className={styles.rightleft}></div>
+    </div>
   );
 };
 
