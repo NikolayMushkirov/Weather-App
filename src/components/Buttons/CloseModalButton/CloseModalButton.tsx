@@ -1,4 +1,3 @@
-import closeIcon from "../../../assets/icons/ui/close_icon.svg";
 import styles from "./CloseModalButton.module.scss";
 
 type Props = {
