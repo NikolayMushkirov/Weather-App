@@ -2,7 +2,7 @@
 
 ## Description
 
-> "This weather application offers a user-friendly interface that allows users to view current weather conditions in various cities around the world. The app utilizes the OpenWeatherMap API to provide up-to-date information on temperature, humidity, wind speed, and atmospheric pressure
+> This application uses the OpenWeatherMap API to provide up-to-date information on temperature, humidity, wind speed and atmospheric pressure  for various cities
 >
 > Live demo [_here_](https://weather-app-theta-ruddy.vercel.app/).
 
