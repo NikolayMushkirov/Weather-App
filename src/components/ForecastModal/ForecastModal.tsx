@@ -42,7 +42,7 @@ const ForecastModal = ({
           weekDayName={getWeekDayName(card.dt_txt)}
         />
       ))}
-      <div className={styles['modal-button-container']}>
+      <div className={styles["modal-button-container"]}>
         <CloseModalButton handleCloseModal={handleCloseModal} />
       </div>
     </Modal>

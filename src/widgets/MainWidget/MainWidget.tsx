@@ -6,7 +6,7 @@ import DateTimeDisplay from "components/DateTimeDisplay/DateTimeDisplay";
 import SmallWeatherCard from "components/WeatherCards/SmallWeatherCard/SmallWeatherCard";
 import SunriseAndSunset from "components/SunriseAndSunset/SunriseAndSunset";
 import AirQuality from "components/AirQuality/AirQuality";
-import SwitchButton from "components/SwitchButton/SwitchButton";
+import SwitchButton from "components/Buttons/SwitchButton/SwitchButton";
 import ForecastModal from "components/ForecastModal/ForecastModal";
 
 import styles from "./MainWidget.module.scss";
